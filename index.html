@@ -407,14 +407,31 @@ nav{
   background:rgba(7,8,15,.96);
   backdrop-filter:blur(28px);
 }
-.logo{
+.logo,.fl0{
   font-family:'Clash Display',sans-serif;font-size:19px;font-weight:700;
   letter-spacing:.18em;color:var(--amber);text-decoration:none;
-  transition:filter .1s;
+  display:inline-flex;
 }
-.logo:hover{filter:url(#glitch)}
-.fl0{transition:filter .1s}
-.fl0:hover{filter:url(#glitch)}
+.logo span,.fl0 span{
+  display:inline-block;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1), color .35s;
+  will-change:transform;
+}
+.logo:hover span,.fl0:hover span{
+  animation:logoBounce .55s cubic-bezier(.4,1.4,.5,1) both;
+  color:#B07CF0;
+}
+.logo:hover span:nth-child(1),.fl0:hover span:nth-child(1){animation-delay:0ms}
+.logo:hover span:nth-child(2),.fl0:hover span:nth-child(2){animation-delay:40ms}
+.logo:hover span:nth-child(3),.fl0:hover span:nth-child(3){animation-delay:80ms}
+.logo:hover span:nth-child(4),.fl0:hover span:nth-child(4){animation-delay:120ms}
+.logo:hover span:nth-child(5),.fl0:hover span:nth-child(5){animation-delay:160ms}
+.logo:hover span:nth-child(6),.fl0:hover span:nth-child(6){animation-delay:200ms}
+@keyframes logoBounce{
+  0%  {transform:translateY(0)}
+  45% {transform:translateY(-6px)}
+  100%{transform:translateY(0)}
+}
 .nl{display:flex;gap:32px;list-style:none}
 .nl a{
   color:var(--mid);text-decoration:none;
@@ -1544,7 +1561,7 @@ footer{
     <strong>⚡ Ograniczona liczba miejsc</strong> · Łódź, czerwiec 2026 · <a href="#price">Zapisz się →</a>
   </div>
   <nav id="nav">
-    <a href="#" class="logo">IMPULS</a>
+    <a href="#" class="logo"><span>I</span><span>M</span><span>P</span><span>U</span><span>L</span><span>S</span></a>
     <ul class="nl">
       <li><a href="#shift">O kursie</a></li>
       <li><a href="#program">Program</a></li>
@@ -1607,7 +1624,7 @@ footer{
       <div class="hrs"><div class="hrn" data-amber="1" data-target="1">0</div><div class="hrl">dzień warsztatu<br>od 9:00 do 20:00</div></div>
       <div class="hrs"><div class="hrn" data-amber="1" data-target="6">0</div><div class="hrl">modułów programu<br>z ćwiczeniami</div></div>
       <div class="hrs"><div class="hrn-static">1 000+</div><div class="hrl">przeszkolonych<br>przez Bartosza</div></div>
-      <div class="hrs"><div class="hrn-static">1:1</div><div class="hrl">konsultacja<br>po warsztacie</div></div>
+      <div class="hrs"><div class="hrn-static">Twój<br>kod</div><div class="hrl">pracujesz na własnym<br>repo, nie na slajdach</div></div>
     </div>
   </div>
 </section>
@@ -1653,7 +1670,7 @@ footer{
       <div class="tbs"><strong>1 000<small>+</small></strong><span>developerów przeszkolonych<br>przez Bartosza</span></div>
       <div class="tbs"><strong>1.</strong><span>pierwsza edycja<br>w Łodzi</span></div>
       <div class="tbs"><strong>11h</strong><span>warsztatu na żywo<br>9:00 — 20:00</span></div>
-      <div class="tbs"><strong>1:1</strong><span>follow-up po kursie<br>30 minut z Bartoszem</span></div>
+      <div class="tbs"><strong>Twój<br>kod</strong><span>warsztat na własnym<br>repo, nie na slajdach</span></div>
     </div>
   </div>
 </section>
@@ -1999,12 +2016,12 @@ footer{
       <div class="fe-card r" style="transition-delay:.30s">
         <div class="fe-num">02</div>
         <h3>Kameralna grupa</h3>
-        <p>Limit miejsc świadomie niski. Więcej czasu 1:1, więcej pytań przerobionych do końca, więcej Twojego kodu pod lupą. W kolejnych edycjach grupa będzie większa.</p>
+        <p>Limit miejsc świadomie niski. Więcej czasu na pytania, więcej kodu przerobionego do końca, więcej uwagi prowadzącego dla każdego. W kolejnych edycjach grupa będzie większa.</p>
       </div>
       <div class="fe-card r" style="transition-delay:.38s">
         <div class="fe-num">03</div>
         <h3>Twoje feedback ma wagę</h3>
-        <p>Jako uczestnik pierwszej edycji wpływasz na to, co znajdzie się w kolejnych. Bartosz pracuje z każdym uczestnikiem po kursie (1:1, 30 min). Twoja opinia idzie na stronę z imieniem i nazwiskiem, jeśli wyrazisz zgodę.</p>
+        <p>Jako uczestnik pierwszej edycji wpływasz na to, co znajdzie się w kolejnych. Po warsztacie zbieramy feedback w krótkiej ankiecie. Jeśli się zgodzisz, Twoja opinia trafia na stronę z imieniem i nazwiskiem.</p>
       </div>
     </div>
 
@@ -2096,7 +2113,7 @@ footer{
         <li>Dostęp do grupy alumni na 12 miesięcy</li>
         <li>Certyfikat ukończenia warsztatu</li>
         <li>Podstawowe przygotowanie do egzaminu <strong>Claude Certified Architect</strong></li>
-        <li>Konsultacja 1:1 po kursie (30 min)</li>
+        <li>Pełny zestaw szablonów CLAUDE.md, promptów i komend</li>
         <li>Kameralna, ograniczona liczba miejsc</li>
       </ul>
     </div>
@@ -2144,7 +2161,7 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <div class="fl0">IMPULS</div>
+  <div class="fl0"><span>I</span><span>M</span><span>P</span><span>U</span><span>L</span><span>S</span></div>
   <p class="ft">© 2026 · Warsztat Claude Code · Łódź · hello@impuls.dev</p>
 </footer>
 
@@ -2402,30 +2419,9 @@ if(wm){
   },{passive:true});
 }
 
-// Text scramble on logo hover
-const logos=document.querySelectorAll('.logo,.fl0');
-const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-logos.forEach(el=>{
-  const orig=el.textContent;
-  el.addEventListener('mouseenter',()=>{
-    let i=0;
-    const id=setInterval(()=>{
-      el.textContent=orig.split('').map((c,j)=>
-        j<i?orig[j]:CHARS[Math.floor(Math.random()*CHARS.length)]
-      ).join('');
-      if(++i>orig.length)clearInterval(id);
-    },40);
-  });
-});
-
-// ── SVG GLITCH TRIGGER ───────────────────────────────
+// ── SVG GLITCH TRIGGER (only for watermark) ─────────
 const ga = document.getElementById('ga');
 const ga2 = document.getElementById('ga2');
-document.querySelectorAll('.logo,.fl0').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    try { ga?.beginElement(); ga2?.beginElement(); } catch(e){}
-  });
-});
 
 // Also: periodic subtle glitch on the </> watermark
 if(wm) {
