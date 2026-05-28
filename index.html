@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07080F">
 <title>IMPULS · Warsztat Claude Code · Łódź, czerwiec 2026</title>
-<meta name="description" content="Jednodniowy warsztat Claude Code w Łodzi. Naucz się pracować 10× szybciej z AI w terminalu. Prowadzi Bartosz Formela — 1 000+ przeszkolonych developerów. Przygotowanie do egzaminu Claude Certified Architect.">
+<meta name="description" content="Jednodniowy warsztat Claude Code w Łodzi, czerwiec 2026. Praca z AI w terminalu na własnym kodzie. Prowadzi Bartosz Formela, który przeszkolił indywidualnie ponad 1 000 developerów. Pierwsza edycja: 990 zł.">
 <meta name="keywords" content="Claude Code, warsztat AI, kurs Claude, programowanie z AI, Łódź, szkolenie programistów, Claude Certified Architect">
 <meta name="author" content="Bartosz Formela · IMPULS">
 
@@ -14,7 +14,7 @@
 <meta property="og:locale" content="pl_PL">
 <meta property="og:site_name" content="IMPULS">
 <meta property="og:title" content="IMPULS · Warsztat Claude Code · Łódź, czerwiec 2026">
-<meta property="og:description" content="Jeden dzień, który zmienia twój workflow. Naucz się pracować 10× szybciej z Claude Code. Prowadzi Bartosz Formela. 990 zł.">
+<meta property="og:description" content="Jeden dzień. Claude Code od zera, na Twoim kodzie. Pierwsza edycja w Łodzi, czerwiec 2026. Prowadzi Bartosz Formela. 990 zł.">
 <meta property="og:image" content="https://impuls.dev/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -290,7 +290,7 @@ body::after{
 }
 
 /* HOLOGRAPHIC CARDS */
-.pcard,.tc-{position:relative;overflow:hidden}
+.pcard,.fe-card{position:relative;overflow:hidden}
 .pcard::after,.tc-::after{
   content:'';
   position:absolute;inset:0;
@@ -512,6 +512,13 @@ nav{
 }
 .hero-trust .stars{color:#F5C842;letter-spacing:1px}
 .hero-trust .sep{opacity:.35}
+.ed-pill{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:.18em;color:var(--cta);
+  border:1px solid rgba(240,98,42,.4);
+  background:rgba(240,98,42,.08);
+  padding:3px 8px;border-radius:3px;
+}
 
 /* CTA buttons */
 .btn{
@@ -604,10 +611,11 @@ nav{
   background:rgba(155,93,229,.07);padding:16px 18px;
   border:1px solid rgba(155,93,229,.18);
 }
-.hrn{
+.hrn,.hrn-static{
   font-family:'Clash Display',sans-serif;font-weight:700;
   font-size:36px;color:var(--amber);line-height:1;
 }
+.hrn-static{font-size:30px;letter-spacing:-.02em}
 .hrl{font-size:12px;color:var(--mid);margin-top:4px;font-weight:500}
 
 /* ─────────────────────────
@@ -1014,44 +1022,70 @@ nav{
 /* ─────────────────────────
    TESTIMONIALS
 ───────────────────────── */
-#testi{padding:140px 60px}
-.tscroll{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;margin-top:64px;
+/* FIRST EDITION */
+#first-ed{padding:140px 60px;background:var(--bg);position:relative}
+.fe-inner{max-width:1280px;margin:0 auto}
+.fe-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  letter-spacing:.18em;color:var(--cta);
+  background:rgba(240,98,42,.08);
+  border:1px solid rgba(240,98,42,.32);
+  padding:7px 14px;border-radius:99px;margin-bottom:28px;
 }
-.tc-{
-  background:rgba(7,8,15,.68);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  padding:36px 32px;
-  border:1px solid rgba(155,93,229,.10);
-  border-top:2px solid var(--dim);
-  box-shadow:0 8px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);
-  transition:border-color .25s,transform .25s,box-shadow .25s;
+.fe-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--cta);
+  animation:dotpulse 1.6s ease-in-out infinite;
 }
-.tc-:hover{
-  border-color:rgba(155,93,229,.3);
-  border-top-color:var(--amber);
-  transform:translateY(-4px);
-  box-shadow:0 16px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+.fe-lead{
+  font-size:18px;line-height:1.65;color:var(--txt);
+  max-width:760px;margin:36px 0 56px;
 }
-.stars{display:flex;gap:3px;margin-bottom:20px}
-.star{color:var(--amber);font-size:13px}
-.tq{
-  font-family:'Clash Display',sans-serif;font-weight:400;
-  font-size:18px;line-height:1.6;
-  color:var(--txt);margin-bottom:28px;font-style:italic;
+.fe-lead strong{color:var(--amber);font-weight:600}
+.fe-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:16px;
+  margin-bottom:48px;
 }
-.ta-{display:flex;gap:13px;align-items:center}
-.av{
-  width:40px;height:40px;border-radius:50%;
-  background:var(--s2);border:1px solid var(--border);
+.fe-card{
+  padding:36px 30px;
+  background:linear-gradient(180deg,rgba(155,93,229,.05),rgba(155,93,229,.01));
+  border:1px solid var(--b2);
+  position:relative;overflow:hidden;
+  transition:border-color .35s,transform .35s;
+}
+.fe-card:hover{border-color:rgba(155,93,229,.35);transform:translateY(-4px)}
+.fe-num{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.18em;margin-bottom:18px;
+}
+.fe-card h3{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:22px;color:var(--txt);margin-bottom:14px;letter-spacing:-.01em;
+}
+.fe-card p{
+  font-size:14.5px;line-height:1.65;color:rgba(236,234,248,.78);
+}
+.fe-card p strong{color:var(--txt);font-weight:600}
+.fe-honest{
+  display:flex;gap:18px;align-items:flex-start;
+  padding:24px 28px;
+  background:rgba(255,255,255,.02);
+  border-left:3px solid var(--cta);
+  border-top:1px solid var(--b2);border-right:1px solid var(--b2);border-bottom:1px solid var(--b2);
+  max-width:980px;
+}
+.fe-honest-ic{
+  width:32px;height:32px;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-family:'Clash Display',sans-serif;font-weight:700;
-  font-size:14px;color:var(--amber);flex-shrink:0;
+  font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;
+  color:var(--cta);
+  border:1.5px solid var(--cta);border-radius:50%;
+  margin-top:2px;
 }
-.an{font-size:15px;font-weight:600}
-.ar{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mid);margin-top:2px}
+.fe-honest p{
+  font-size:14.5px;line-height:1.65;color:rgba(236,234,248,.78);
+}
+.fe-honest p strong{color:var(--txt);font-weight:600}
 
 /* ─────────────────────────
    INSTRUCTOR
@@ -1438,7 +1472,7 @@ footer{
   .hero-left{padding:120px 28px 60px}
   #hero::before{display:none}
   .wm{display:none}
-  #pain,.quote-break,#program,#testi,#inst,#faq,#price{padding:80px 28px}
+  #pain,.quote-break,#program,#first-ed,#inst,#faq,#price{padding:80px 28px}
   .pain-grid,.prog-grid{grid-template-columns:1fr;gap:8px}
   .pcard{grid-column:span 1 !important}
   .cs-head{padding:0 28px 24px}
@@ -1446,8 +1480,7 @@ footer{
   .frame{width:240px}
   .frame.wide{width:300px}
   .frame.tall{width:190px}
-  .tscroll{display:flex;overflow-x:auto;scrollbar-width:none;cursor:grab;gap:10px}
-  .tc-{flex-shrink:0;width:300px}
+  .fe-grid{grid-template-columns:1fr;gap:12px}
   .shift-inner,.inst-g,.faq-g,.price-inner,.cert-inner{grid-template-columns:1fr;gap:48px}
   .prog-head{flex-direction:column;align-items:flex-start;gap:16px}
   footer{flex-direction:column;gap:14px;text-align:center;padding:32px 28px}
@@ -1547,10 +1580,10 @@ footer{
       <a href="#shift" class="btn btn-o">Pokaż mi jak</a>
     </div>
     <p class="hero-trust">
-      <span class="stars">★★★★★</span>
-      <span>9 na 10 uczestników zmienia workflow</span>
+      <span class="ed-pill">PIERWSZA EDYCJA</span>
+      <span>1 000+ developerów już przeszkolonych przez Bartosza</span>
       <span class="sep">·</span>
-      <span>1 000+ przeszkolonych przez Bartosza</span>
+      <span>kameralna grupa</span>
     </p>
   </div>
 
@@ -1571,10 +1604,10 @@ footer{
       <div class="tbody" id="term"></div>
     </div>
     <div class="hr-stats">
-      <div class="hrs"><div class="hrn" data-amber="1" data-target="8">0</div><div class="hrl">× szybciej przy<br>rutynowych zadaniach</div></div>
-      <div class="hrs"><div class="hrn" data-amber="1" data-target="9">0</div><div class="hrl">na 10 uczestników<br>zmienia workflow</div></div>
       <div class="hrs"><div class="hrn" data-amber="1" data-target="1">0</div><div class="hrl">dzień warsztatu<br>od 9:00 do 20:00</div></div>
-      <div class="hrs"><div class="hrn" data-amber="1" data-target="6">0</div><div class="hrl">modułów programu</div></div>
+      <div class="hrs"><div class="hrn" data-amber="1" data-target="6">0</div><div class="hrl">modułów programu<br>z ćwiczeniami</div></div>
+      <div class="hrs"><div class="hrn-static">1 000+</div><div class="hrl">przeszkolonych<br>przez Bartosza</div></div>
+      <div class="hrs"><div class="hrn-static">1:1</div><div class="hrl">konsultacja<br>po warsztacie</div></div>
     </div>
   </div>
 </section>
@@ -1617,10 +1650,10 @@ footer{
       </div>
     </div>
     <div class="tb-stats">
-      <div class="tbs"><strong>1 047</strong><span>przeszkolonych developerów</span></div>
-      <div class="tbs"><strong>4.92<small>/5</small></strong><span>średnia ocena szkoleń</span></div>
-      <div class="tbs"><strong>96%</strong><span>poleca znajomym</span></div>
-      <div class="tbs"><strong>14 dni</strong><span>średni czas wdrożenia w pracy</span></div>
+      <div class="tbs"><strong>1 000<small>+</small></strong><span>developerów przeszkolonych<br>przez Bartosza</span></div>
+      <div class="tbs"><strong>1.</strong><span>pierwsza edycja<br>w Łodzi</span></div>
+      <div class="tbs"><strong>11h</strong><span>warsztatu na żywo<br>9:00 — 20:00</span></div>
+      <div class="tbs"><strong>1:1</strong><span>follow-up po kursie<br>30 minut z Bartoszem</span></div>
     </div>
   </div>
 </section>
@@ -1857,7 +1890,7 @@ footer{
 <section class="fit-section" id="fit">
   <div class="fit-inner">
     <div class="fit-head">
-      <p class="sec-tag r">// szczerze</p>
+      <p class="sec-tag r">szczerze</p>
       <h2 class="sh r" style="transition-delay:.07s">
         Nie dla każdego.<br>
         <span style="color:var(--amber)">Sprawdź czy dla Ciebie.</span>
@@ -1944,59 +1977,42 @@ footer{
   </p>
 </div>
 
-<!-- TESTIMONIALS -->
-<section id="testi">
-  <p class="sec-tag r">co mówią uczestnicy</p>
-  <h2 class="sh r" style="transition-delay:.07s">Mówią to sami.</h2>
+<!-- FIRST EDITION — honest scarcity zamiast fake testimoniali -->
+<section id="first-ed">
+  <div class="fe-inner">
+    <div class="fe-badge r"><span class="fe-dot"></span>PIERWSZA EDYCJA · ŁÓDŹ · CZERWIEC 2026</div>
+    <p class="sec-tag r" style="transition-delay:.05s">szczerze o tym, dlaczego teraz</p>
+    <h2 class="sh r" style="transition-delay:.1s">
+      To pierwsza edycja.<br>
+      <span class="amb">I to jest twoja przewaga.</span>
+    </h2>
+    <p class="fe-lead r" style="transition-delay:.18s">
+      Bartosz przeszkolił już ponad <strong>1 000 developerów</strong> indywidualnie i w swojej firmie. Ale to <strong>pierwszy raz</strong>, kiedy upakowuje cały ten know-how w jeden, otwarty warsztat w Łodzi. Nie mamy jeszcze opinii z TEJ edycji. Dlatego:
+    </p>
 
-  <div class="tscroll" id="ts">
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"Wróciłem do biura w poniedziałek i zamknąłem ticket, który miał trwać tydzień, przed lunchem. Szef myślał, że coś pominąłem. Zapytałem go czy chce żebym wytłumaczył każdą linię."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=11" alt="Michał K."></div>
-        <div><div class="an">Michał K.</div><div class="ar">Senior Backend Developer</div></div>
+    <div class="fe-grid">
+      <div class="fe-card r" style="transition-delay:.22s">
+        <div class="fe-num">01</div>
+        <h3>Cena premiery</h3>
+        <p><strong>990 zł</strong> zamiast docelowych <strong>1 990 zł</strong>. Pierwsza edycja zawsze dostaje uczciwy upust — bo dajesz nam feedback, bez którego kolejne edycje nie będą równie dobre.</p>
+      </div>
+      <div class="fe-card r" style="transition-delay:.30s">
+        <div class="fe-num">02</div>
+        <h3>Kameralna grupa</h3>
+        <p>Limit miejsc świadomie niski. Więcej czasu 1:1, więcej pytań przerobionych do końca, więcej Twojego kodu pod lupą. W kolejnych edycjach grupa będzie większa.</p>
+      </div>
+      <div class="fe-card r" style="transition-delay:.38s">
+        <div class="fe-num">03</div>
+        <h3>Twoje feedback ma wagę</h3>
+        <p>Jako uczestnik pierwszej edycji wpływasz na to, co znajdzie się w kolejnych. Bartosz pracuje z każdym uczestnikiem po kursie (1:1, 30 min). Twoja opinia idzie na stronę z imieniem i nazwiskiem, jeśli wyrazisz zgodę.</p>
       </div>
     </div>
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"Myślałam że wiem co to AI w pracy, używałam Copilota od roku. Claude Code to nie jest Copilot. To ktoś kto czyta cały Twój projekt i rozumie o co Ci chodzi zanim skończysz zdanie."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=47" alt="Anna S."></div>
-        <div><div class="an">Anna S.</div><div class="ar">Full Stack Developer</div></div>
-      </div>
-    </div>
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"Byłem sceptyczny co do kursów w ogóle. Ale to nie był kurs. To był ktoś kto pokazał mi jak myśleć inaczej o pracy. Po trzech tygodniach zaproponowałem szefowi podwyżkę. Dostałem."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=68" alt="Piotr W."></div>
-        <div><div class="an">Piotr W.</div><div class="ar">Tech Lead, 12 lat w branży</div></div>
-      </div>
-    </div>
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"W przerwie obiadowej warsztatu przepisałam moduł, który trzymał nas w tyle od miesiąca. Zrobiłam to sama, w 2 godziny. Wtedy zrozumiałam że to nie jest kolejne szkolenie."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=49" alt="Karolina N."></div>
-        <div><div class="an">Karolina N.</div><div class="ar">DevOps Engineer</div></div>
-      </div>
-    </div>
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"Miałem 4 lata doświadczenia i czułem się przeciętny. Teraz realizuję projekty, które wcześniej bałem się wycenić. Nie stałem się lepszym programistą. Stałem się innym programistą."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=12" alt="Tomasz M."></div>
-        <div><div class="an">Tomasz M.</div><div class="ar">Mid → Tech Lead w 4 miesiące</div></div>
-      </div>
-    </div>
-    <div class="tc-">
-      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
-      <p class="tq">"Projekt który wyceniłem na 6 tygodni skończyłem w 9 dni. Klientowi powiedziałem że pracowałem po nocach. Nie powiedziałem z czym."</p>
-      <div class="ta-">
-        <div class="av"><img src="https://i.pravatar.cc/100?img=15" alt="Radek K."></div>
-        <div><div class="an">Radek K.</div><div class="ar">Freelance Full Stack · Kraków</div></div>
-      </div>
+
+    <div class="fe-honest r" style="transition-delay:.46s">
+      <span class="fe-honest-ic">!</span>
+      <p>
+        <strong>Czego nie obiecujemy:</strong> że ten warsztat zmieni Ci życie po 3 godzinach. Że "wszyscy uczestnicy podwoili pensję". Że masz na siebie patent na sukces. To kurs techniczny, oparty na realnej pracy z Claude Code. Wnioski wyciągniesz sam, na własnym kodzie.
+      </p>
     </div>
   </div>
 </section>
@@ -2320,12 +2336,12 @@ function onS(e){
 const twEl = document.getElementById('tw');
 if(twEl){
   const roles = [
-    'developer z supermocą',
-    'ktoś kto dostarcza 3× więcej',
-    'programista AI-first',
-    'ten który zawsze zdąża',
-    'ktoś kogo zespół nie nadąża',
-    'developer który bierze trudniejsze projekty',
+    'developer pracujący z AI od ręki',
+    'programista, któremu Claude czyta projekt',
+    'ktoś, kto kończy zanim inni zaczną',
+    'AI-first developer',
+    'ten który nie boi się trudnych refaktorów',
+    'developer biorący ambitniejsze projekty',
   ];
   let ri=0, ci=0, deleting=false;
   function tick(){
@@ -2345,7 +2361,7 @@ if(twEl){
 }
 
 // ── HOLOGRAPHIC CARDS ────────────────────────────────
-document.querySelectorAll('.pcard,.tc-').forEach(card=>{
+document.querySelectorAll('.pcard,.fe-card').forEach(card=>{
   // inject shine div
   const shine = document.createElement('div');
   shine.className = 'holo-shine';
