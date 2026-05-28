@@ -898,6 +898,113 @@ nav{
 /* ─────────────────────────
    CERT CALLOUT
 ───────────────────────── */
+/* INTERACTIVE DEMO */
+#try{
+  padding:140px 60px 120px;
+  background:linear-gradient(180deg,var(--bg) 0%,#0A0B14 50%,var(--bg) 100%);
+  border-top:1px solid var(--b2);border-bottom:1px solid var(--b2);
+  position:relative;overflow:hidden;
+}
+#try::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:50%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green) 50%,transparent);
+  opacity:.6;
+}
+.try-head{max-width:780px;margin:0 auto 56px;text-align:center}
+.try-head .sh{font-size:clamp(38px,4.6vw,68px);line-height:1.04}
+.try-lead{
+  margin-top:24px;font-size:16px;line-height:1.65;
+  color:rgba(236,234,248,.7);
+}
+.try-wrap{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:340px 1fr;gap:18px;
+  align-items:stretch;
+}
+.try-chips{display:flex;flex-direction:column;gap:8px}
+.try-chip{
+  text-align:left;cursor:pointer;
+  background:rgba(255,255,255,.015);
+  border:1px solid var(--b2);
+  padding:18px 20px;
+  font-family:'Satoshi',sans-serif;color:var(--txt);
+  display:grid;grid-template-columns:auto 1fr;gap:4px 14px;
+  transition:border-color .25s,background .25s,transform .25s;
+  position:relative;overflow:hidden;
+}
+.try-chip:hover{border-color:rgba(155,93,229,.4);transform:translateX(3px)}
+.try-chip.active{
+  background:linear-gradient(135deg,rgba(155,93,229,.10),rgba(46,232,160,.04));
+  border-color:var(--amber);
+}
+.try-chip.active::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(180deg,var(--amber),var(--green));
+}
+.tc-i{
+  grid-row:span 2;align-self:center;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.14em;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--b2);background:rgba(7,8,15,.5);
+}
+.try-chip.active .tc-i{border-color:var(--amber);background:rgba(155,93,229,.12)}
+.tc-t{font-family:'Clash Display',sans-serif;font-weight:600;font-size:15px;letter-spacing:-.005em}
+.tc-d{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--mid);letter-spacing:.04em;
+}
+.try-stage{
+  background:#05060B;border:1px solid var(--b2);
+  display:flex;flex-direction:column;min-height:480px;
+  position:relative;overflow:hidden;
+}
+.try-bar{
+  display:flex;align-items:center;gap:7px;
+  padding:11px 16px;
+  background:rgba(255,255,255,.02);
+  border-bottom:1px solid var(--b2);
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;
+  color:var(--mid);letter-spacing:.04em;
+}
+.tdot{width:11px;height:11px;border-radius:50%}
+.tdot-r{background:#FF5F57}
+.tdot-y{background:#FEBC2E}
+.tdot-g{background:#28C840}
+.try-bar-name{margin-left:8px}
+.try-bar-status{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--green);
+}
+.try-stat-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 12px rgba(46,232,160,.6);
+  animation:dotpulse 1.6s ease-in-out infinite;
+}
+.try-body{
+  padding:24px 26px;flex:1;
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  line-height:1.75;color:var(--txt);
+  overflow-y:auto;
+}
+.try-body .l{display:block;opacity:0;transform:translateY(4px);transition:opacity .25s,transform .25s}
+.try-body .l.in{opacity:1;transform:translateY(0)}
+.try-body .cmd{color:var(--amber)}
+.try-body .cmd::before{content:'$ ';color:var(--green);font-weight:700}
+.try-body .ai{color:rgba(236,234,248,.85)}
+.try-body .ai::before{content:'◆ ';color:#B07CF0}
+.try-body .ok{color:var(--green)}
+.try-body .ok::before{content:'✓ ';color:var(--green);font-weight:700}
+.try-body .warn{color:#FEBC2E}
+.try-body .warn::before{content:'! ';color:#FEBC2E;font-weight:700}
+.try-body .dim{color:var(--mid)}
+.try-body .file{color:var(--cta)}
+.try-body .num{color:var(--green);font-weight:600}
+.try-body .blink{display:inline-block;width:8px;height:14px;background:var(--green);vertical-align:middle;margin-left:2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
 /* FIT CHECK */
 .fit-section{
   padding:120px 60px;background:var(--bg);
@@ -1012,6 +1119,81 @@ nav{
   font-family:'JetBrains Mono',monospace;font-size:12px;
   color:var(--green);
 }
+
+/* CERT ROADMAP */
+.cert-road{
+  grid-column:1/-1;margin-top:80px;
+  border-top:1px dashed rgba(155,93,229,.22);
+  padding-top:48px;
+}
+.cert-road-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.20em;text-transform:uppercase;
+  margin-bottom:28px;text-align:center;
+}
+.cert-road-track{
+  display:grid;grid-template-columns:1fr auto 1fr auto 1fr;
+  gap:20px;align-items:stretch;
+}
+.crs{
+  padding:24px 22px;
+  background:rgba(255,255,255,.015);
+  border:1px solid var(--b2);
+  position:relative;
+  display:flex;flex-direction:column;gap:12px;
+  transition:border-color .35s, transform .35s;
+}
+.crs:hover{border-color:rgba(155,93,229,.32);transform:translateY(-3px)}
+.crs-now{
+  background:linear-gradient(180deg,rgba(155,93,229,.10),rgba(46,232,160,.04));
+  border-color:var(--amber);
+  box-shadow:0 0 0 1px rgba(155,93,229,.18),0 12px 32px rgba(155,93,229,.10);
+}
+.crs-n{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.18em;
+  display:inline-block;
+  padding:4px 10px;border:1px solid var(--b2);background:rgba(7,8,15,.5);
+  align-self:flex-start;
+}
+.crs-now .crs-n{border-color:var(--amber);background:rgba(155,93,229,.14)}
+.crs-h{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:22px;color:var(--txt);letter-spacing:-.01em;
+}
+.crs-meta{
+  font-family:'JetBrains Mono',monospace;font-size:11.5px;
+  color:var(--mid);letter-spacing:.04em;margin-top:-6px;
+}
+.crs-body p{font-size:14px;line-height:1.6;color:rgba(236,234,248,.72)}
+.crs-body p strong{color:var(--txt);font-weight:600}
+.crs-tag{
+  display:inline-flex;align-items:center;align-self:flex-start;
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--green);
+  padding:4px 10px;
+  background:rgba(46,232,160,.10);border:1px solid rgba(46,232,160,.35);
+  margin-top:auto;
+}
+.crs-tag::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--green);margin-right:8px;
+  box-shadow:0 0 8px rgba(46,232,160,.6);
+  animation:dotpulse 1.6s ease-in-out infinite;
+}
+.crs-arr{
+  font-family:'Clash Display',sans-serif;font-weight:700;font-size:32px;
+  color:rgba(155,93,229,.4);align-self:center;
+}
+.cert-disclaimer{
+  margin-top:36px;
+  padding:18px 22px;
+  background:rgba(7,8,15,.5);border-left:3px solid var(--cta);
+  border-top:1px solid var(--b2);border-right:1px solid var(--b2);border-bottom:1px solid var(--b2);
+  font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.65;
+  color:rgba(236,234,248,.7);
+}
+.cert-disclaimer strong{color:var(--cta);font-weight:600}
 
 /* ─────────────────────────
    QUOTE BREAK
@@ -1457,15 +1639,39 @@ nav{
    FOOTER
 ───────────────────────── */
 footer{
-  padding:40px 60px;border-top:1px solid var(--b2);
-  display:flex;justify-content:space-between;align-items:center;
-  background:var(--bg);
+  padding:80px 60px 40px;border-top:1px solid var(--b2);
+  background:linear-gradient(180deg,var(--bg) 0%,#05060B 100%);
 }
-.fl0{
-  font-family:'Clash Display',sans-serif;font-weight:700;
-  font-size:16px;letter-spacing:.18em;color:var(--amber);
+.ft-grid{
+  max-width:1280px;margin:0 auto;
+  display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:48px;
+  padding-bottom:48px;border-bottom:1px solid var(--b2);
 }
-.ft{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid)}
+.ft-brand{display:flex;flex-direction:column;gap:18px}
+.ft-tag{
+  font-size:13.5px;line-height:1.6;color:rgba(236,234,248,.6);
+  max-width:280px;
+}
+.ft-edition{margin-top:auto}
+.ft-h{
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  color:var(--amber);letter-spacing:.20em;text-transform:uppercase;
+  margin-bottom:18px;font-weight:500;
+}
+.ft-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:10px}
+.ft-list a{
+  font-size:13.5px;color:rgba(236,234,248,.7);text-decoration:none;
+  transition:color .2s;
+}
+.ft-list a:hover{color:var(--amber)}
+.ft-dim{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--mid)}
+.ft-bottom{
+  max-width:1280px;margin:32px auto 0;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:24px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(108,106,126,.7);letter-spacing:.04em;line-height:1.6;
+}
+.ft-meta{text-align:right;font-size:10.5px}
 
 /* ─────────────────────────
    ANIMATIONS
@@ -1489,7 +1695,9 @@ footer{
   .hero-left{padding:120px 28px 60px}
   #hero::before{display:none}
   .wm{display:none}
-  #pain,.quote-break,#program,#first-ed,#inst,#faq,#price{padding:80px 28px}
+  #pain,.quote-break,#program,#first-ed,#inst,#faq,#price,#try{padding:80px 28px}
+  .try-wrap{grid-template-columns:1fr;gap:14px}
+  .try-stage{min-height:380px}
   .pain-grid,.prog-grid{grid-template-columns:1fr;gap:8px}
   .pcard{grid-column:span 1 !important}
   .cs-head{padding:0 28px 24px}
@@ -1498,6 +1706,13 @@ footer{
   .frame.wide{width:300px}
   .frame.tall{width:190px}
   .fe-grid{grid-template-columns:1fr;gap:12px}
+  .cert-road-track{grid-template-columns:1fr;gap:12px}
+  .crs-arr{transform:rotate(90deg);justify-self:center}
+  footer{padding:60px 28px 32px}
+  .ft-grid{grid-template-columns:1fr 1fr;gap:32px;padding-bottom:32px}
+  .ft-brand{grid-column:span 2}
+  .ft-bottom{flex-direction:column;gap:14px}
+  .ft-meta{text-align:left}
   .shift-inner,.inst-g,.faq-g,.price-inner,.cert-inner{grid-template-columns:1fr;gap:48px}
   .prog-head{flex-direction:column;align-items:flex-start;gap:16px}
   footer{flex-direction:column;gap:14px;text-align:center;padding:32px 28px}
@@ -1766,6 +1981,53 @@ footer{
   </div>
 </section>
 
+<!-- INTERACTIVE DEMO -->
+<section id="try">
+  <div class="try-head">
+    <p class="sec-tag r">kliknij i zobacz</p>
+    <h2 class="sh r" style="transition-delay:.07s">
+      Tak <span class="amb">to wygląda</span> w praktyce.
+    </h2>
+    <p class="try-lead r" style="transition-delay:.14s">
+      Wybierz scenariusz. Zobacz co dzieje się w terminalu. Bez instalacji, bez konta. To nie video — to symulacja realnej sesji z Claude Code.
+    </p>
+  </div>
+
+  <div class="try-wrap r" style="transition-delay:.22s">
+    <div class="try-chips">
+      <button class="try-chip active" data-demo="refactor">
+        <span class="tc-i">01</span>
+        <span class="tc-t">Refaktor 847 linii</span>
+        <span class="tc-d">monolit → moduły</span>
+      </button>
+      <button class="try-chip" data-demo="bug">
+        <span class="tc-i">02</span>
+        <span class="tc-t">Polowanie na buga</span>
+        <span class="tc-d">flaky test od tygodnia</span>
+      </button>
+      <button class="try-chip" data-demo="api">
+        <span class="tc-i">03</span>
+        <span class="tc-t">Nowy endpoint REST</span>
+        <span class="tc-d">od zera, z testami</span>
+      </button>
+      <button class="try-chip" data-demo="migrate">
+        <span class="tc-i">04</span>
+        <span class="tc-t">Migracja JS → TS</span>
+        <span class="tc-d">cały moduł, bez błędów</span>
+      </button>
+    </div>
+
+    <div class="try-stage">
+      <div class="try-bar">
+        <div class="tdot tdot-r"></div><div class="tdot tdot-y"></div><div class="tdot tdot-g"></div>
+        <span class="try-bar-name">~/twoj-projekt</span>
+        <span class="try-bar-status"><span class="try-stat-dot"></span><span id="tryStat">idle</span></span>
+      </div>
+      <div class="try-body" id="tryBody"></div>
+    </div>
+  </div>
+</section>
+
 <!-- PROGRAM -->
 <section id="program">
   <div class="prog-head r">
@@ -1981,6 +2243,42 @@ footer{
       </div>
     </div>
   </div>
+
+  <div class="cert-road r" style="transition-delay:.18s">
+    <p class="cert-road-label">Ścieżka do certyfikatu</p>
+    <div class="cert-road-track">
+      <div class="crs crs-now">
+        <div class="crs-n">01</div>
+        <div class="crs-body">
+          <div class="crs-h">Warsztat IMPULS</div>
+          <div class="crs-meta">1 dzień · Łódź · 990 zł</div>
+          <p>Fundament Claude Code: instalacja, kontekst, prompt engineering, refaktor, debugging. Wychodzisz z mapą tego, co musisz dopracować dalej.</p>
+          <span class="crs-tag">jesteś tutaj</span>
+        </div>
+      </div>
+      <div class="crs-arr">›</div>
+      <div class="crs">
+        <div class="crs-n">02</div>
+        <div class="crs-body">
+          <div class="crs-h">Praca własna</div>
+          <div class="crs-meta">4-6 tygodni · materiały + alumni</div>
+          <p>Ćwiczysz na realnych projektach. Grupa alumni (12 miesięcy dostępu) to miejsce, gdzie zadajesz pytania. Materiały po warsztacie nie znikają.</p>
+        </div>
+      </div>
+      <div class="crs-arr">›</div>
+      <div class="crs">
+        <div class="crs-n">03</div>
+        <div class="crs-body">
+          <div class="crs-h">Egzamin Anthropic</div>
+          <div class="crs-meta">online · płatność u Anthropic</div>
+          <p>Rejestrujesz się i zdajesz egzamin <strong>Claude Certified Architect</strong> bezpośrednio u Anthropic. Po pozytywnym wyniku wchodzisz do globalnej bazy certyfikowanych.</p>
+        </div>
+      </div>
+    </div>
+    <p class="cert-disclaimer">
+      <strong>Uczciwie:</strong> egzamin jest płatny i organizowany przez Anthropic, nie przez nas. Warsztat to fundament — nie skrót. Bez kroków 02 i 03 nie zdasz, ale bez kroku 01 będziesz uczył się chaotycznie 6 miesięcy. To kurs, który skraca ścieżkę, nie obiecuje teleportu.
+    </p>
+  </div>
 </section>
 
 <!-- QUOTE BREAK -->
@@ -2161,8 +2459,53 @@ footer{
 
 <!-- FOOTER -->
 <footer>
-  <div class="fl0"><span>I</span><span>M</span><span>P</span><span>U</span><span>L</span><span>S</span></div>
-  <p class="ft">© 2026 · Warsztat Claude Code · Łódź · hello@impuls.dev</p>
+  <div class="ft-grid">
+    <div class="ft-col ft-brand">
+      <div class="fl0"><span>I</span><span>M</span><span>P</span><span>U</span><span>L</span><span>S</span></div>
+      <p class="ft-tag">Warsztat Claude Code dla developerów.<br>Łódź · czerwiec 2026.</p>
+      <p class="ft-edition"><span class="ed-pill">PIERWSZA EDYCJA</span></p>
+    </div>
+
+    <div class="ft-col">
+      <h4 class="ft-h">Strona</h4>
+      <ul class="ft-list">
+        <li><a href="#shift">O kursie</a></li>
+        <li><a href="#try">Demo Claude'a</a></li>
+        <li><a href="#program">Program</a></li>
+        <li><a href="#inst">Prowadzący</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#price">Zapisz się</a></li>
+      </ul>
+    </div>
+
+    <div class="ft-col">
+      <h4 class="ft-h">Kontakt</h4>
+      <ul class="ft-list">
+        <li><a href="mailto:hello@impuls.dev">hello@impuls.dev</a></li>
+        <li><a href="tel:+48000000000">+48 000 000 000</a></li>
+        <li class="ft-dim">Łódź, ul. Piotrkowska</li>
+        <li class="ft-dim">pon-pt · 9:00-17:00</li>
+      </ul>
+    </div>
+
+    <div class="ft-col">
+      <h4 class="ft-h">Formalne</h4>
+      <ul class="ft-list">
+        <li><a href="#" onclick="alert('Strona w przygotowaniu — uzupełnij przed wdrożeniem.');return false">Regulamin warsztatu</a></li>
+        <li><a href="#" onclick="alert('Strona w przygotowaniu — uzupełnij przed wdrożeniem.');return false">Polityka prywatności</a></li>
+        <li><a href="#" onclick="alert('Strona w przygotowaniu — uzupełnij przed wdrożeniem.');return false">Cookies (RODO)</a></li>
+        <li><a href="#" onclick="alert('Strona w przygotowaniu — uzupełnij przed wdrożeniem.');return false">Odstąpienie od umowy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ft-bottom">
+    <p class="ft-c">© 2026 IMPULS · NIP 000-000-00-00 · Wszelkie prawa zastrzeżone</p>
+    <p class="ft-meta">
+      Claude i Claude Code to znaki towarowe Anthropic PBC. <br>
+      IMPULS nie jest powiązany ani sponsorowany przez Anthropic.
+    </p>
+  </div>
 </footer>
 
 <script>
@@ -2320,16 +2663,91 @@ setTimeout(()=>{
   term.appendChild(el);
 },7600);
 
-// Testimonials drag
-const ts=document.getElementById('ts');
-let dn=false,sx,sl;
-ts.addEventListener('mousedown',e=>{dn=true;sx=e.pageX-ts.offsetLeft;sl=ts.scrollLeft});
-ts.addEventListener('mouseleave',()=>dn=false);
-ts.addEventListener('mouseup',()=>dn=false);
-ts.addEventListener('mousemove',e=>{
-  if(!dn)return;e.preventDefault();
-  ts.scrollLeft=sl-(e.pageX-ts.offsetLeft-sx);
+// ── INTERACTIVE DEMO ───────────────────────────────
+const tryBody = document.getElementById('tryBody');
+const tryStat = document.getElementById('tryStat');
+const demos = {
+  refactor: [
+    [0,   'cmd', 'claude "zrefaktoruj <span class="file">payments/index.js</span> — chcę moduły"'],
+    [550, 'dim', '  Czytam <span class="file">payments/index.js</span> <span class="num">(847 linii)</span>...'],
+    [950, 'dim', '  Mapuję zależności, identyfikuję spójne obszary...'],
+    [1400,'ai',  'Widzę 4 logiczne moduły: <span class="file">processor</span>, <span class="file">refunds</span>, <span class="file">webhooks</span>, <span class="file">validation</span>. Dzielę.'],
+    [1900,'dim', '  Generuję pliki, przenoszę funkcje, aktualizuję importy...'],
+    [2500,'dim', '  Uruchamiam testy: <span class="num">94/94 OK</span>'],
+    [2900,'ok',  '<span class="num">847</span> → <span class="num">312</span> linii. API surface zachowane. <span class="num">28s</span>.'],
+  ],
+  bug: [
+    [0,   'cmd', 'claude "<span class="file">UserService.test.ts</span> migla raz na 5 uruchomień — znajdź"'],
+    [600, 'dim', '  Analizuję test, mockowanie, zależności czasowe...'],
+    [1200,'dim', '  Sprawdzam <span class="file">UserService.ts:142</span> — wywołanie <span class="cmd">Date.now()</span>'],
+    [1700,'warn','Wykryto race condition. <span class="file">UserService.ts:142</span> używa Date.now() poza mockiem.'],
+    [2200,'ai',  'Proponuję: wstrzyknąć clock przez constructor. Pokazać diff?'],
+    [2700,'dim', '  Generuję poprawkę + 1 test zabezpieczający...'],
+    [3200,'ok',  'Bug zlokalizowany w <span class="num">3 min</span>. Test deterministyczny <span class="num">100/100</span>.'],
+  ],
+  api: [
+    [0,   'cmd', 'claude "REST: /posts CRUD z autoryzacją JWT + testy"'],
+    [550, 'dim', '  Skanuję projekt: <span class="file">Express 4</span>, <span class="file">Prisma</span>, <span class="file">jest</span>'],
+    [1000,'ai',  'Trzymam się Twoich konwencji. Generuję 5 plików + migrację.'],
+    [1500,'dim', '  <span class="file">routes/posts.ts</span> — endpointy GET/POST/PATCH/DELETE'],
+    [1900,'dim', '  <span class="file">middleware/auth.ts</span> — weryfikacja JWT (zgodna z istniejącym)'],
+    [2300,'dim', '  <span class="file">tests/posts.test.ts</span> — <span class="num">12</span> przypadków, coverage <span class="num">94%</span>'],
+    [2800,'ok',  'Endpoint gotowy. <span class="num">340</span> linii. Wszystkie testy zielone.'],
+  ],
+  migrate: [
+    [0,   'cmd', 'claude "przemigruj <span class="file">utils/</span> z JS na TS, bez psucia API"'],
+    [550, 'dim', '  Czytam <span class="num">12</span> plików w <span class="file">utils/</span>...'],
+    [1100,'dim', '  Wyciągam typy z użycia: <span class="num">38</span> funkcji, <span class="num">14</span> typów'],
+    [1600,'ai',  'Zachowuję sygnatury. Generuję <span class="file">.ts</span> + <span class="file">.d.ts</span> dla zewnętrznych importów.'],
+    [2100,'dim', '  Uruchamiam <span class="cmd">tsc --noEmit</span>: <span class="num">0</span> błędów'],
+    [2500,'dim', '  Uruchamiam pełen test suite: <span class="num">218/218</span> przechodzi'],
+    [3000,'ok',  '<span class="num">12</span> plików zmigrowanych. <span class="num">0</span> regresji. <span class="num">42s</span>.'],
+  ],
+};
+
+let demoTimers = [];
+function runDemo(key){
+  demoTimers.forEach(t => clearTimeout(t));
+  demoTimers = [];
+  tryBody.innerHTML = '';
+  tryStat.textContent = 'running';
+  const lines = demos[key];
+  lines.forEach(([d, cls, html])=>{
+    demoTimers.push(setTimeout(()=>{
+      const el = document.createElement('span');
+      el.className = `l ${cls}`;
+      el.innerHTML = html;
+      tryBody.appendChild(el);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.add('in')));
+      tryBody.scrollTop = tryBody.scrollHeight;
+    }, d));
+  });
+  const last = lines[lines.length-1][0] + 300;
+  demoTimers.push(setTimeout(()=>{
+    tryStat.textContent = 'done';
+    const cursor = document.createElement('span');
+    cursor.className = 'l';
+    cursor.innerHTML = '<span class="cmd">_<span class="blink"></span></span>';
+    tryBody.appendChild(cursor);
+    requestAnimationFrame(()=>cursor.classList.add('in'));
+  }, last));
+}
+
+document.querySelectorAll('.try-chip').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.try-chip').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    runDemo(btn.dataset.demo);
+  });
 });
+
+// auto-fire pierwszy gdy sekcja wjedzie w viewport
+const tryObs = new IntersectionObserver((es)=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){ runDemo('refactor'); tryObs.disconnect(); }
+  });
+},{threshold:.3});
+if(tryBody) tryObs.observe(document.getElementById('try'));
 
 // FAQ
 document.querySelectorAll('.fq').forEach(q=>{
