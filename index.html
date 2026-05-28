@@ -1,0 +1,2434 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07080F">
+<title>IMPULS · Warsztat Claude Code · Łódź, czerwiec 2026</title>
+<meta name="description" content="Jednodniowy warsztat Claude Code w Łodzi. Naucz się pracować 10× szybciej z AI w terminalu. Prowadzi Bartosz Formela — 1 000+ przeszkolonych developerów. Przygotowanie do egzaminu Claude Certified Architect.">
+<meta name="keywords" content="Claude Code, warsztat AI, kurs Claude, programowanie z AI, Łódź, szkolenie programistów, Claude Certified Architect">
+<meta name="author" content="Bartosz Formela · IMPULS">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pl_PL">
+<meta property="og:site_name" content="IMPULS">
+<meta property="og:title" content="IMPULS · Warsztat Claude Code · Łódź, czerwiec 2026">
+<meta property="og:description" content="Jeden dzień, który zmienia twój workflow. Naucz się pracować 10× szybciej z Claude Code. Prowadzi Bartosz Formela. 990 zł.">
+<meta property="og:image" content="https://impuls.dev/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://impuls.dev/">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="IMPULS · Warsztat Claude Code · Łódź 2026">
+<meta name="twitter:description" content="Jeden dzień. Inne życie zawodowe. Warsztat Claude Code z Bartoszem Formelą.">
+<meta name="twitter:image" content="https://impuls.dev/og.jpg">
+
+<!-- Favicon (inline SVG, no extra request) -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070810'/%3E%3Cpath d='M14 22h6l6 20h-6l-1-4h-6l-1 4H6l8-20zm2 12h4l-2-8-2 8zM30 22h12c5 0 8 3 8 7 0 3-2 6-5 7l5 6h-7l-4-5h-3v5h-6V22zm6 5v5h5c1 0 2-1 2-2s-1-3-2-3h-5z' fill='%239B5DE5'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23070810'/%3E%3Cpath d='M14 22h6l6 20h-6l-1-4h-6l-1 4H6l8-20zm2 12h4l-2-8-2 8zM30 22h12c5 0 8 3 8 7 0 3-2 6-5 7l5 6h-7l-4-5h-3v5h-6V22zm6 5v5h5c1 0 2-1 2-2s-1-3-2-3h-5z' fill='%239B5DE5'/%3E%3C/svg%3E">
+
+<!-- Structured data: Event -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationEvent",
+  "name": "IMPULS · Warsztat Claude Code",
+  "description": "Jednodniowy warsztat Claude Code dla developerów. Praca z AI w terminalu, przygotowanie do egzaminu Claude Certified Architect.",
+  "startDate": "2026-06-13T09:00+02:00",
+  "endDate": "2026-06-13T20:00+02:00",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+  "location": {
+    "@type": "Place",
+    "name": "IMPULS · Łódź",
+    "address": {"@type":"PostalAddress","addressLocality":"Łódź","addressCountry":"PL"}
+  },
+  "performer": {"@type":"Person","name":"Bartosz Formela"},
+  "organizer": {"@type":"Organization","name":"IMPULS","url":"https://impuls.dev"},
+  "offers": {
+    "@type":"Offer",
+    "price":"990",
+    "priceCurrency":"PLN",
+    "availability":"https://schema.org/LimitedAvailability",
+    "url":"https://impuls.dev/#price"
+  }
+}
+</script>
+
+<!-- Fonts -->
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=satoshi@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Lenis smooth scroll -->
+<script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:     #07080F;
+  --s1:     #0D0F1A;
+  --s2:     #131620;
+  --amber:  #9B5DE5;   /* violet — brand accent */
+  --cta:    #F0622A;   /* warm orange — CTA, high conversion color */
+  --a10:    rgba(155,93,229,.10);
+  --a20:    rgba(155,93,229,.20);
+  --green:  #2EE8A0;   /* mint — progress / sukces */
+  --red:    #FF4B6E;
+  --txt:    #ECEAF8;
+  --mid:    #6C6A7E;
+  --dim:    #1E1E30;
+  --border: rgba(155,93,229,.18);
+  --b2:     rgba(255,255,255,.06);
+}
+
+/* Accessibility — respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+    scroll-behavior:auto !important;
+  }
+  .cs-track,.tb-track,.mtrack{animation:none !important}
+  .frame:hover,.tb-logo:hover,.fit-col:hover{transform:none !important}
+  .sh.r,.inst-name.r,.price-sh.r,.hh1.r{
+    opacity:1 !important;clip-path:none !important;
+  }
+  .r{opacity:1 !important;transform:none !important}
+}
+
+/* text-wrap: balance for all headings — eliminates ugly orphans */
+h1,h2,h3,.sh,.hh1,.pain-h,.pc-q,.fq,.inst-name,.price-sh{
+  text-wrap:balance;
+}
+p{text-wrap:pretty}
+
+html{
+  scroll-behavior:smooth;
+  /* offset anchor links for fixed header (~90px strip+nav) */
+  scroll-padding-top:96px;
+}
+
+/* ─────────────────────────
+   AURORA BACKGROUND
+───────────────────────── */
+.aurora-bg{
+  position:absolute;inset:0;overflow:hidden;
+  pointer-events:none;z-index:0;
+}
+.ab{
+  position:absolute;border-radius:50%;
+  filter:blur(100px);mix-blend-mode:screen;
+}
+.ab-1{
+  width:550px;height:550px;
+  background:radial-gradient(circle,rgba(155,93,229,.28) 0%,transparent 70%);
+  top:-180px;left:-80px;
+  animation:ab1 16s ease-in-out infinite alternate;
+}
+.ab-2{
+  width:420px;height:420px;
+  background:radial-gradient(circle,rgba(46,232,160,.20) 0%,transparent 70%);
+  bottom:-120px;left:25%;
+  animation:ab2 20s ease-in-out infinite alternate;
+}
+.ab-3{
+  width:320px;height:320px;
+  background:radial-gradient(circle,rgba(120,160,255,.14) 0%,transparent 70%);
+  top:25%;right:-40px;
+  animation:ab3 12s ease-in-out infinite alternate;
+}
+@keyframes ab1{to{transform:translate(110px,70px) scale(1.18)}}
+@keyframes ab2{to{transform:translate(-70px,-55px) scale(1.22)}}
+@keyframes ab3{to{transform:translate(-55px,45px) scale(.88)}}
+
+/* ─────────────────────────
+   CSS SCROLL-DRIVEN ANIMATIONS
+   Progressive enhancement: replaces IntersectionObserver in Chrome/Edge/Safari 18+
+───────────────────────── */
+@keyframes reveal{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* Curtain reveal for big headings */
+@keyframes curtain{
+  from{clip-path:inset(0 0 100% 0);opacity:0}
+  to{clip-path:inset(0 0 0% 0);opacity:1}
+}
+.sh.r,.hh1.r,.inst-name.r,.price-sh.r{
+  clip-path:inset(0 0 100% 0);opacity:0;
+}
+.sh.r.in,.hh1.r.in,.inst-name.r.in,.price-sh.r.in{
+  animation:curtain .8s cubic-bezier(.16,1,.3,1) both;
+  animation-timeline:auto;
+  animation-range:normal;
+}
+
+@supports (animation-timeline:view()){
+  .r:not(.sh):not(.inst-name):not(.price-sh):not(.hh1){
+    animation:reveal linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 28%;
+    transition:none !important;
+    opacity:0;transform:translateY(28px);
+  }
+}
+
+body{
+  background:var(--bg);color:var(--txt);
+  font-family:'Satoshi',sans-serif;
+  overflow-x:hidden;cursor:none;
+}
+
+/* GRAIN */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9997;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.025;
+}
+
+/* CURSOR — magnetic dot only */
+#cur{
+  position:fixed;left:0;top:0;
+  width:10px;height:10px;
+  background:#fff;border-radius:50%;
+  pointer-events:none;z-index:9999;
+  will-change:transform;
+  mix-blend-mode:difference;
+  transition:width .15s,height .15s,background .15s;
+}
+#cur.mag{
+  width:20px;height:20px;
+  background:var(--amber);
+  mix-blend-mode:normal;
+}
+
+/* ─────────────────────────
+   INTRO ANIMATION
+───────────────────────── */
+#intro{
+  position:fixed;inset:0;z-index:10000;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  background:var(--bg);
+  pointer-events:all;
+}
+#intro .i-top,#intro .i-bot{
+  position:absolute;left:0;right:0;
+  background:var(--bg);
+  transition:transform .9s cubic-bezier(.76,0,.24,1);
+}
+#intro .i-top{top:0;height:50%}
+#intro .i-bot{bottom:0;height:50%}
+#intro.reveal .i-top{transform:translateY(-100%)}
+#intro.reveal .i-bot{transform:translateY(100%)}
+#intro.done{display:none}
+
+.i-terminal{
+  position:relative;z-index:1;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--mid);
+  line-height:2;text-align:left;
+  width:min(480px,90vw);
+  margin-bottom:40px;
+  min-height:120px;
+}
+.i-line{opacity:0;transform:translateX(-8px);transition:opacity .2s,transform .2s}
+.i-line.in{opacity:1;transform:translateX(0)}
+.i-line .ok{color:var(--green)}
+.i-line .acc{color:var(--amber)}
+
+.i-logo{
+  position:relative;z-index:1;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(72px,14vw,180px);
+  letter-spacing:.08em;
+  color:var(--txt);
+  opacity:0;transform:scale(.92);
+  transition:opacity .5s ease,transform .5s ease;
+  line-height:1;
+}
+.i-logo.in{opacity:1;transform:scale(1)}
+.i-logo span{color:var(--amber)}
+
+.i-sub{
+  position:relative;z-index:1;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;color:var(--mid);
+  letter-spacing:.22em;text-transform:uppercase;
+  margin-top:16px;
+  opacity:0;transition:opacity .4s .2s;
+}
+.i-logo.in ~ .i-sub{opacity:1}
+
+/* GRADIENT HEADLINE — @property for smooth typed interpolation */
+@property --gp{
+  syntax:'<percentage>';
+  initial-value:-60%;
+  inherits:false;
+}
+.hh1 .grad{
+  background:linear-gradient(90deg,
+    transparent 0%,
+    var(--amber) calc(var(--gp) + 30%),
+    var(--green) calc(var(--gp) + 55%),
+    transparent calc(var(--gp) + 80%)
+  );
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:var(--txt); /* fallback */
+  animation:gradflow 4s linear infinite;
+}
+@keyframes gradflow{
+  from{--gp:-60%}
+  to{--gp:120%}
+}
+
+/* HOLOGRAPHIC CARDS */
+.pcard,.tc-{position:relative;overflow:hidden}
+.pcard::after,.tc-::after{
+  content:'';
+  position:absolute;inset:0;
+  background:conic-gradient(
+    from var(--holo-angle,0deg),
+    rgba(155,93,229,0) 0%,
+    rgba(155,93,229,.18) 15%,
+    rgba(46,232,160,.22) 30%,
+    rgba(255,100,200,.15) 45%,
+    rgba(155,93,229,0) 60%
+  );
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
+  mix-blend-mode:screen;
+}
+.pcard:hover::after,.tc-:hover::after{opacity:1}
+.holo-shine{
+  position:absolute;inset:0;
+  background:radial-gradient(
+    circle at var(--mx,50%) var(--my,50%),
+    rgba(255,255,255,.12) 0%,
+    transparent 60%
+  );
+  pointer-events:none;
+  opacity:0;transition:opacity .3s;
+}
+.pcard:hover .holo-shine,.tc-:hover .holo-shine{opacity:1}
+
+/* TYPEWRITER */
+.tw-wrap{
+  display:inline-block;
+  position:relative;
+  color:var(--amber);
+  font-weight:700;
+}
+.tw-cursor{
+  display:inline-block;
+  width:3px;height:.85em;
+  background:var(--amber);
+  vertical-align:text-bottom;
+  margin-left:3px;
+  animation:bl 1s step-end infinite;
+}
+
+/* SCROLL PROGRESS */
+#progress{
+  position:fixed;top:0;left:0;height:2px;width:0%;
+  background:var(--amber);z-index:9996;pointer-events:none;
+  transition:width .08s linear;
+}
+
+/* FLOATING CTA */
+.fcta{
+  position:fixed;bottom:32px;right:32px;z-index:400;
+  opacity:0;transform:translateY(16px) scale(.95);
+  transition:opacity .4s,transform .4s;pointer-events:none;
+}
+.fcta.show{opacity:1;transform:translateY(0) scale(1);pointer-events:all}
+.fcta a{
+  display:flex;align-items:center;gap:10px;
+  background:var(--cta);color:#fff;
+  padding:14px 26px;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:14px;letter-spacing:.08em;text-decoration:none;
+  box-shadow:0 8px 32px rgba(240,98,42,.35),0 2px 8px rgba(0,0,0,.4);
+  transition:transform .2s,box-shadow .2s;
+}
+.fcta a:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 40px rgba(240,98,42,.5),0 4px 12px rgba(0,0,0,.4);
+}
+.fcta-pulse{
+  position:absolute;top:0;left:0;right:0;bottom:0;
+  background:var(--cta);opacity:.4;
+  animation:pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1);opacity:.4}
+  50%{transform:scale(1.12);opacity:0}
+}
+
+/* ─────────────────────────
+   SITE HEADER (strip + nav unified)
+───────────────────────── */
+#site-header{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  display:flex;flex-direction:column;
+}
+.strip{
+  background:var(--amber);color:var(--bg);
+  text-align:center;padding:10px 20px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;letter-spacing:.10em;font-weight:500;
+  overflow:hidden;
+  max-height:48px;
+  transition:max-height .4s ease,padding .4s ease;
+}
+.strip a{color:var(--bg);font-weight:700;text-decoration:underline}
+#site-header.compact .strip{max-height:0;padding:0}
+.strip-ph{display:none}
+
+/* ─────────────────────────
+   NAV
+───────────────────────── */
+nav{
+  padding:20px 60px;
+  display:flex;justify-content:space-between;align-items:center;
+  background:rgba(7,8,15,.88);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+}
+#site-header.compact nav{
+  background:rgba(7,8,15,.96);
+  backdrop-filter:blur(28px);
+}
+.logo{
+  font-family:'Clash Display',sans-serif;font-size:19px;font-weight:700;
+  letter-spacing:.18em;color:var(--amber);text-decoration:none;
+  transition:filter .1s;
+}
+.logo:hover{filter:url(#glitch)}
+.fl0{transition:filter .1s}
+.fl0:hover{filter:url(#glitch)}
+.nl{display:flex;gap:32px;list-style:none}
+.nl a{
+  color:var(--mid);text-decoration:none;
+  font-size:13.5px;font-weight:500;letter-spacing:.02em;
+  transition:color .2s;
+}
+.nl a:hover{color:var(--txt)}
+.ncta{
+  color:#fff !important;background:var(--cta);
+  padding:9px 22px !important;font-weight:700 !important;
+  transition:opacity .2s !important;
+}
+.ncta:hover{opacity:.84}
+
+/* ─────────────────────────
+   HERO
+───────────────────────── */
+#hero{
+  min-height:100vh;
+  display:grid;grid-template-columns:1fr 460px;
+  align-items:stretch;
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--border);
+}
+
+/* subtle grid bg */
+#hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:
+    linear-gradient(rgba(155,93,229,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(155,93,229,.035) 1px,transparent 1px);
+  background-size:72px 72px;
+}
+
+/* hero decorative code tag */
+.wm{
+  position:absolute;right:-20px;bottom:40px;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(100px,14vw,200px);line-height:1;
+  color:rgba(155,93,229,.06);
+  pointer-events:none;letter-spacing:-.04em;
+  user-select:none;white-space:nowrap;
+}
+
+.hero-left{
+  padding:110px 60px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  position:relative;z-index:2;
+}
+
+.hlabel{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--amber);letter-spacing:.26em;text-transform:uppercase;
+  margin-bottom:24px;display:flex;align-items:center;gap:12px;
+  opacity:0;animation:up .6s ease forwards .1s;
+  position:relative;z-index:1;
+}
+.hlabel::before{content:'';width:28px;height:1px;background:var(--amber);flex-shrink:0}
+
+.hh1{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(54px,6.8vw,108px);
+  line-height:.94;letter-spacing:.005em;
+  opacity:0;animation:up .9s ease forwards .25s;
+  position:relative;z-index:1;
+}
+.hh1 .lo{display:block}
+.hh1 .amber{color:var(--amber)}
+.hh1 .outline{
+  -webkit-text-stroke:2px var(--txt);color:transparent;
+}
+
+.hsub{
+  margin-top:26px;font-size:17px;
+  line-height:1.68;color:var(--mid);
+  max-width:500px;
+  opacity:0;animation:up .9s ease forwards .45s;
+  position:relative;z-index:1;
+}
+.hsub strong{color:var(--txt)}
+
+.hctas{
+  margin-top:36px;display:flex;gap:20px;align-items:center;
+  opacity:0;animation:up .9s ease forwards .65s;
+  position:relative;z-index:1;
+}
+/* hero trust strip — social proof below CTA */
+.hero-trust{
+  margin-top:24px;
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--mid);letter-spacing:.04em;
+  display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  opacity:0;animation:up .7s ease forwards .85s;
+  position:relative;z-index:1;
+}
+.hero-trust .stars{color:#F5C842;letter-spacing:1px}
+.hero-trust .sep{opacity:.35}
+
+/* CTA buttons */
+.btn{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:14px;letter-spacing:.08em;text-decoration:none;
+  padding:15px 34px;cursor:pointer;border:none;display:inline-block;
+  transition:transform .2s,opacity .2s;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-f{background:var(--cta);color:var(--bg)}
+.btn-f:hover{opacity:.86}
+.btn-o{
+  color:var(--txt);background:transparent;
+  border:1px solid var(--dim);padding:14px 34px;
+  transition:border-color .2s,transform .2s;
+}
+.btn-o:hover{border-color:var(--mid);transform:translateY(-2px)}
+
+/* hero right — dark with glow */
+.hero-right{
+  background:var(--s1);
+  display:flex;flex-direction:column;justify-content:center;
+  padding:160px 44px 80px;
+  position:relative;z-index:2;
+  border-left:1px solid var(--border);
+  overflow:hidden;
+}
+.hero-right::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 20% 40%, rgba(155,93,229,.14) 0%, transparent 65%);
+  pointer-events:none;
+}
+.hero-right::after{
+  content:'';position:absolute;
+  top:40px;left:44px;right:44px;bottom:40px;
+  border:1px solid rgba(155,93,229,.15);
+  pointer-events:none;
+}
+
+/* decorative rings in hero-right */
+.hero-rings{
+  position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);
+  width:520px;height:520px;pointer-events:none;z-index:0;
+}
+.hring{position:absolute;border-radius:50%;border:1px solid var(--amber);top:50%;left:50%;transform:translate(-50%,-50%)}
+.hring-1{width:120px;height:120px;opacity:.35;animation:rpulse 4s ease-in-out infinite}
+.hring-2{width:240px;height:240px;opacity:.18;animation:rpulse 4s ease-in-out infinite .7s}
+.hring-3{width:370px;height:370px;opacity:.09;animation:rpulse 4s ease-in-out infinite 1.4s}
+.hring-4{width:500px;height:500px;opacity:.04;animation:rpulse 4s ease-in-out infinite 2.1s}
+.hring-dot{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 16px var(--amber);opacity:.8}
+@keyframes rpulse{
+  0%,100%{opacity:inherit}
+  50%{transform:translate(-50%,-50%) scale(1.06);opacity:.5}
+}
+
+.terminal{
+  background:var(--bg);border:1px solid rgba(155,93,229,.3);
+  border-radius:6px;overflow:hidden;
+  box-shadow:0 32px 64px rgba(0,0,0,.5);
+}
+.tbar{
+  background:var(--s2);padding:12px 16px;
+  display:flex;align-items:center;gap:6px;
+  border-bottom:1px solid var(--b2);
+}
+.d{width:9px;height:9px;border-radius:50%}
+.dr{background:#FF5F56}.dy{background:#FFBD2E}.dg{background:#27C93F}
+.tn{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);margin-left:8px}
+.tbody{
+  padding:20px 18px;
+  font-family:'JetBrains Mono',monospace;
+  font-size:12px;line-height:2;
+  min-height:260px;overflow:hidden;
+}
+.tp{color:var(--green)}.tc{color:var(--txt)}.to{color:var(--mid)}
+.ts{color:var(--green)}.ta{color:var(--amber)}
+.tc-cur{
+  display:inline-block;width:7px;height:12px;
+  background:var(--amber);vertical-align:text-bottom;
+  animation:bl 1.1s step-end infinite;
+}
+@keyframes bl{0%,100%{opacity:1}50%{opacity:0}}
+
+/* hero-right stats */
+.hr-stats{
+  margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  position:relative;z-index:1;
+}
+.hrs{
+  background:rgba(155,93,229,.07);padding:16px 18px;
+  border:1px solid rgba(155,93,229,.18);
+}
+.hrn{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:36px;color:var(--amber);line-height:1;
+}
+.hrl{font-size:12px;color:var(--mid);margin-top:4px;font-weight:500}
+
+/* ─────────────────────────
+   TRUST BAR
+───────────────────────── */
+.trust-bar{
+  background:linear-gradient(180deg,var(--bg) 0%,#0A0B14 50%,var(--bg) 100%);
+  border-top:1px solid var(--b2);
+  position:relative;overflow:hidden;
+}
+.tb-inner{
+  max-width:1400px;margin:0 auto;
+  padding:46px 60px 50px;
+}
+.tb-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(155,93,229,.7);letter-spacing:.20em;
+  text-transform:uppercase;text-align:center;margin-bottom:26px;
+}
+.tb-track-wrap{
+  overflow:hidden;position:relative;
+  mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent);
+}
+.tb-track-wrap::before,.tb-track-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
+}
+.tb-track{
+  display:flex;align-items:center;gap:0;
+  width:max-content;
+  animation:tbslide 35s linear infinite;
+}
+.trust-bar:hover .tb-track{animation-play-state:paused}
+.tb-logo{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:28px;letter-spacing:-.01em;
+  color:rgba(236,234,248,.42);
+  padding:0 36px;white-space:nowrap;
+  transition:color .3s, transform .3s;
+  filter:grayscale(100%);
+}
+.tb-logo:hover{color:var(--txt);transform:scale(1.04)}
+.tb-sep{
+  width:6px;height:6px;border-radius:50%;
+  background:rgba(155,93,229,.35);flex-shrink:0;
+}
+@keyframes tbslide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.tb-stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+  margin-top:42px;
+  border-top:1px dashed rgba(155,93,229,.18);
+  padding-top:28px;
+}
+.tbs{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  text-align:center;
+}
+.tbs strong{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:36px;color:var(--txt);letter-spacing:-.02em;line-height:1;
+  background:linear-gradient(135deg,#fff 0%,#B07CF0 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.tbs strong small{font-size:18px;color:rgba(236,234,248,.4);font-weight:500;-webkit-text-fill-color:rgba(236,234,248,.4)}
+.tbs span{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--mid);letter-spacing:.10em;text-transform:uppercase;
+  max-width:180px;line-height:1.5;
+}
+
+/* ─────────────────────────
+   MARQUEE
+───────────────────────── */
+.marquee{
+  overflow:hidden;background:var(--s1);
+  border-top:1px solid var(--b2);border-bottom:1px solid var(--b2);
+  padding:16px 0;display:flex;
+}
+.mtrack{
+  display:flex;flex-shrink:0;min-width:100%;
+  animation:sc 22s linear infinite;
+  white-space:nowrap;
+}
+.mtrack span{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:13px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mid);padding:0 24px;
+}
+.mtrack .dot{color:var(--amber);padding:0 8px;opacity:.6}
+@keyframes sc{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+/* ─────────────────────────
+   PAIN
+───────────────────────── */
+#pain{
+  padding:140px 60px;
+  position:relative;overflow:hidden;
+}
+.pain-bg{
+  position:absolute;right:-20px;top:50%;transform:translateY(-50%);
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(180px,22vw,320px);line-height:1;letter-spacing:-.04em;
+  color:rgba(155,93,229,.03);pointer-events:none;user-select:none;
+}
+.pain-inner{max-width:900px}
+.sec-tag{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--amber);letter-spacing:.26em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;margin-bottom:28px;
+}
+.sec-tag::before{content:'//';opacity:.45}
+.sh{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(44px,6.5vw,100px);line-height:.92;letter-spacing:-.03em;
+}
+.sh .amb{color:var(--amber)}
+.sh .lo{display:block}
+
+.pain-text{
+  margin-top:36px;font-size:19px;line-height:1.74;
+  color:var(--mid);max-width:660px;
+}
+.pain-text strong{color:var(--txt)}
+
+.pain-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;margin-top:80px;
+  background:var(--b2);
+}
+.pc{
+  background:var(--bg);padding:40px 32px;
+  border-top:2px solid var(--dim);
+  transition:border-color .3s,transform .3s;position:relative;overflow:hidden;
+}
+.pc::before{
+  content:attr(data-n);
+  position:absolute;top:-12px;right:16px;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:100px;color:rgba(155,93,229,.04);line-height:1;
+  pointer-events:none;letter-spacing:-.04em;
+}
+.pc:hover{border-color:var(--amber);transform:translateY(-4px)}
+.pc-q{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:19px;line-height:1.3;margin-bottom:14px;
+}
+.pc p{font-size:15px;line-height:1.68;color:var(--mid)}
+
+/* ─────────────────────────
+   SHIFT (DARK WARM)
+───────────────────────── */
+#shift{
+  background:#0A0910;
+  padding:120px 60px;
+  position:relative;overflow:hidden;
+  border-top:1px solid rgba(155,93,229,.18);
+  border-bottom:1px solid rgba(155,93,229,.18);
+}
+#shift::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(155,93,229,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(155,93,229,.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.shift-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;position:relative;z-index:1;
+}
+.shift-copy .sh{color:var(--txt)}
+.shift-copy .sh .amb{color:var(--amber)}
+.shift-copy p{
+  font-size:17px;line-height:1.76;
+  color:#a09880;margin-bottom:18px;margin-top:28px;
+}
+.shift-copy strong{color:var(--txt)}
+
+/* before/after on dark warm bg */
+.ba-stack{display:flex;flex-direction:column;gap:2px}
+.ba{
+  display:grid;grid-template-columns:50px 1fr;
+  gap:14px;padding:16px 18px;align-items:start;
+}
+.ba-b{background:rgba(255,255,255,.03);border-left:2px solid var(--dim)}
+.ba-a{background:rgba(155,93,229,.10);border-left:2px solid var(--amber)}
+.ba-tag{
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  letter-spacing:.12em;padding:3px 5px;text-align:center;margin-top:2px;
+}
+.ba-b .ba-tag{background:var(--dim);color:var(--mid)}
+.ba-a .ba-tag{background:var(--amber);color:var(--bg);font-weight:700}
+.ba-b .ba-txt{font-size:15px;line-height:1.6;color:#7a7468}
+.ba-a .ba-txt{font-size:15px;line-height:1.6;color:var(--txt)}
+
+/* ─────────────────────────
+   PROGRAM
+───────────────────────── */
+#program{padding:140px 60px;background:var(--s1);border-top:1px solid var(--b2)}
+.prog-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:80px;
+}
+.prog-note{max-width:250px;font-size:15.5px;color:var(--mid);line-height:1.6}
+
+/* BENTO GRID */
+.prog-grid{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:12px;
+}
+.pcard:nth-child(1){grid-column:span 4}
+.pcard:nth-child(2){grid-column:span 2}
+.pcard:nth-child(3){grid-column:span 2}
+.pcard:nth-child(4){grid-column:span 4}
+.pcard:nth-child(5){grid-column:span 3}
+.pcard:nth-child(6){grid-column:span 3}
+
+/* GLASSMORPHISM */
+.pcard{
+  background:rgba(7,8,15,.72);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  padding:38px 32px;
+  position:relative;overflow:hidden;
+  border:1px solid rgba(155,93,229,.10);
+  border-top:2px solid var(--dim);
+  box-shadow:0 8px 24px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.04);
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.pcard:hover{
+  border-color:rgba(155,93,229,.35);
+  border-top-color:var(--amber);
+  transform:translateY(-5px);
+  box-shadow:0 24px 48px rgba(0,0,0,.5),0 0 0 1px rgba(155,93,229,.15);
+}
+.pnum{
+  position:absolute;top:-8px;right:20px;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:96px;line-height:1;
+  color:rgba(155,93,229,.06);letter-spacing:-.04em;pointer-events:none;
+}
+.pday{
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;
+  color:var(--amber);letter-spacing:.18em;margin-bottom:16px;
+  position:relative;z-index:1;
+}
+.pcard h3{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:20px;line-height:1.2;margin-bottom:12px;
+  position:relative;z-index:1;
+}
+.pcard p{font-size:15px;line-height:1.7;color:var(--mid);position:relative;z-index:1}
+.pts{margin-top:22px;display:flex;flex-direction:column;position:relative;z-index:1}
+.pt{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  color:var(--mid);padding:6px 0;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  display:flex;align-items:center;gap:9px;
+}
+.pt::before{content:'→';color:var(--amber);flex-shrink:0}
+.pt:last-child{border-bottom:none}
+
+/* ─────────────────────────
+   CERT CALLOUT
+───────────────────────── */
+/* FIT CHECK */
+.fit-section{
+  padding:120px 60px;background:var(--bg);
+  border-top:1px solid var(--b2);
+  position:relative;overflow:hidden;
+}
+.fit-section::before{
+  content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:60%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--amber) 50%,transparent);
+  opacity:.4;
+}
+.fit-inner{max-width:1280px;margin:0 auto}
+.fit-head{margin-bottom:56px;max-width:780px}
+.fit-head .sh{font-size:clamp(38px,4.6vw,68px);line-height:1}
+.fit-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:24px;
+}
+.fit-col{
+  padding:36px 34px;border:1px solid var(--b2);
+  background:linear-gradient(180deg,rgba(255,255,255,.015),transparent);
+  position:relative;
+  transition:border-color .4s, transform .4s;
+}
+.fit-col:hover{transform:translateY(-3px)}
+.fit-yes{border-color:rgba(46,232,160,.22)}
+.fit-yes:hover{border-color:rgba(46,232,160,.55)}
+.fit-no{border-color:rgba(255,75,110,.18)}
+.fit-no:hover{border-color:rgba(255,75,110,.45)}
+.fit-col-h{
+  display:flex;align-items:center;gap:14px;
+  padding-bottom:20px;margin-bottom:24px;
+  border-bottom:1px dashed var(--b2);
+}
+.fit-col-h h3{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:24px;letter-spacing:-.01em;color:var(--txt);
+}
+.fit-mark{
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  font-family:'Clash Display',sans-serif;font-weight:700;font-size:18px;
+  border-radius:50%;
+}
+.fit-mark.fy{background:rgba(46,232,160,.14);color:var(--green);border:1px solid rgba(46,232,160,.4)}
+.fit-mark.fn{background:rgba(255,75,110,.10);color:var(--red);border:1px solid rgba(255,75,110,.35)}
+.fit-list{list-style:none;padding:0;display:flex;flex-direction:column;gap:14px}
+.fit-list li{
+  font-size:15.5px;line-height:1.6;color:rgba(236,234,248,.85);
+  padding-left:24px;position:relative;
+}
+.fit-list li::before{
+  content:'›';position:absolute;left:0;top:0;
+  font-family:'JetBrains Mono',monospace;
+  color:rgba(155,93,229,.6);font-weight:700;
+}
+.fit-no .fit-list li{color:rgba(236,234,248,.65)}
+.fit-no .fit-list li::before{color:rgba(255,75,110,.5)}
+
+.cert-section{
+  padding:100px 60px;
+  background:var(--s1);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  position:relative;overflow:hidden;
+}
+.cert-section::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at 80% 50%, rgba(46,232,160,.07) 0%, transparent 60%),
+             radial-gradient(ellipse at 10% 50%, rgba(155,93,229,.07) 0%, transparent 50%);
+  pointer-events:none;
+}
+.cert-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:center;
+  position:relative;z-index:1;
+}
+.cert-badge{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:20px;text-align:center;
+}
+.cert-icon{
+  width:160px;height:160px;
+  border-radius:50%;
+  border:2px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+  box-shadow:0 0 60px rgba(46,232,160,.15),inset 0 0 40px rgba(46,232,160,.05);
+  animation:cert-glow 3s ease-in-out infinite;
+}
+@keyframes cert-glow{
+  0%,100%{box-shadow:0 0 60px rgba(46,232,160,.15),inset 0 0 40px rgba(46,232,160,.05)}
+  50%{box-shadow:0 0 90px rgba(46,232,160,.28),inset 0 0 60px rgba(46,232,160,.10)}
+}
+.cert-icon svg{width:64px;height:64px;stroke:var(--green);fill:none;stroke-width:1.5}
+.cert-name{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:15px;letter-spacing:.12em;color:var(--green);
+  text-transform:uppercase;
+}
+.cert-issuer{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--mid);letter-spacing:.08em;
+}
+.cert-copy .sh{margin-bottom:24px;text-align:left}
+.cert-copy p{font-size:16.5px;line-height:1.76;color:var(--mid);margin-bottom:16px}
+.cert-copy strong{color:var(--txt)}
+.cert-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.cert-pill{
+  padding:7px 16px;
+  background:rgba(46,232,160,.08);
+  border:1px solid rgba(46,232,160,.25);
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--green);
+}
+
+/* ─────────────────────────
+   QUOTE BREAK
+───────────────────────── */
+.quote-break{
+  padding:100px 60px;
+  background:var(--bg);border-top:1px solid var(--b2);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.qbg{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-family:'Clash Display',sans-serif;font-size:240px;font-weight:700;
+  color:rgba(155,93,229,.025);letter-spacing:-.06em;pointer-events:none;
+  white-space:nowrap;
+}
+.qb-text{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(28px,4.5vw,68px);line-height:1.1;letter-spacing:-.025em;
+  max-width:900px;margin:0 auto;position:relative;z-index:1;
+}
+.qb-text .amb{color:var(--amber)}
+.qb-text em{font-style:italic;font-weight:400}
+
+/* ─────────────────────────
+   TESTIMONIALS
+───────────────────────── */
+#testi{padding:140px 60px}
+.tscroll{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;margin-top:64px;
+}
+.tc-{
+  background:rgba(7,8,15,.68);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  padding:36px 32px;
+  border:1px solid rgba(155,93,229,.10);
+  border-top:2px solid var(--dim);
+  box-shadow:0 8px 24px rgba(0,0,0,.22),inset 0 1px 0 rgba(255,255,255,.04);
+  transition:border-color .25s,transform .25s,box-shadow .25s;
+}
+.tc-:hover{
+  border-color:rgba(155,93,229,.3);
+  border-top-color:var(--amber);
+  transform:translateY(-4px);
+  box-shadow:0 16px 40px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.06);
+}
+.stars{display:flex;gap:3px;margin-bottom:20px}
+.star{color:var(--amber);font-size:13px}
+.tq{
+  font-family:'Clash Display',sans-serif;font-weight:400;
+  font-size:18px;line-height:1.6;
+  color:var(--txt);margin-bottom:28px;font-style:italic;
+}
+.ta-{display:flex;gap:13px;align-items:center}
+.av{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--s2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:14px;color:var(--amber);flex-shrink:0;
+}
+.an{font-size:15px;font-weight:600}
+.ar{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--mid);margin-top:2px}
+
+/* ─────────────────────────
+   INSTRUCTOR
+───────────────────────── */
+#inst{
+  padding:140px 60px;
+  background:var(--s1);border-top:1px solid var(--b2);
+}
+.inst-g{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+.inst-l{position:sticky;top:110px}
+.inst-img{
+  width:100%;aspect-ratio:4/5;
+  border:1px solid var(--border);
+  overflow:hidden;position:relative;
+  background:linear-gradient(160deg,#180e28 0%,#0d0f1a 50%,#08120e 100%);
+}
+.inst-img img{
+  width:100%;height:100%;object-fit:cover;
+  object-position:top center;display:block;
+}
+.inst-img::before{
+  content:'';position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(ellipse at 30% 20%,rgba(155,93,229,.25) 0%,transparent 60%),
+    radial-gradient(ellipse at 80% 80%,rgba(46,232,160,.12) 0%,transparent 50%);
+}
+.inst-img::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;z-index:2;
+  height:35%;background:linear-gradient(transparent,var(--s1));
+}
+.ipl{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(60px,12vw,120px);
+  color:rgba(155,93,229,.18);
+  user-select:none;letter-spacing:.06em;
+  z-index:1;
+}
+.inst-img .photo-hint{
+  position:absolute;bottom:56px;left:50%;transform:translateX(-50%);
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  color:rgba(255,255,255,.2);letter-spacing:.12em;
+  white-space:nowrap;z-index:3;text-transform:uppercase;
+}
+
+/* WORKSHOP CONTACT SHEET — 35mm filmstrip */
+.cs-wrap{
+  position:relative;padding:80px 0 110px;
+  background:linear-gradient(180deg,transparent,rgba(155,93,229,.04) 30%,rgba(46,232,160,.03) 70%,transparent);
+  overflow:hidden;
+}
+.cs-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  padding:0 60px 36px;gap:24px;flex-wrap:wrap;
+}
+.cs-title{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:clamp(34px,3.6vw,52px);line-height:1;letter-spacing:-.02em;
+  max-width:640px;
+}
+.cs-title em{
+  font-style:normal;color:var(--amber);
+  background:linear-gradient(90deg,#9B5DE5,#2EE8A0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.cs-meta{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:rgba(255,255,255,.4);letter-spacing:.14em;text-transform:uppercase;
+  display:flex;flex-direction:column;gap:6px;text-align:right;
+}
+.cs-meta .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:#F0622A;margin-right:6px;animation:rec 1.6s ease-in-out infinite}
+@keyframes rec{50%{opacity:.25}}
+
+.filmstrip{
+  position:relative;
+  background:#0a0a12;
+  border-top:1px solid rgba(155,93,229,.18);
+  border-bottom:1px solid rgba(155,93,229,.18);
+  padding:14px 0;
+  overflow:hidden;
+}
+.filmstrip + .filmstrip{margin-top:18px}
+.filmstrip::before,.filmstrip::after{
+  content:'';position:absolute;left:0;right:0;height:14px;
+  background-image:
+    radial-gradient(circle at 12px 50%,#07080F 4px,transparent 4.5px);
+  background-size:28px 14px;background-repeat:repeat-x;
+  pointer-events:none;z-index:3;
+}
+.filmstrip::before{top:0}
+.filmstrip::after{bottom:0}
+.cs-track{
+  display:flex;gap:14px;width:max-content;
+  animation:csscroll 60s linear infinite;
+  will-change:transform;
+}
+.filmstrip:nth-child(odd) .cs-track{animation-direction:normal}
+.filmstrip:nth-child(even) .cs-track{animation-direction:reverse;animation-duration:75s}
+.filmstrip:hover .cs-track{animation-play-state:paused}
+@keyframes csscroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.frame{
+  position:relative;flex-shrink:0;
+  width:340px;aspect-ratio:4/3;
+  background:#000;
+  overflow:hidden;
+  cursor:zoom-in;
+  transition:transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.frame.tall{aspect-ratio:3/4;width:260px}
+.frame.wide{aspect-ratio:16/9;width:420px}
+.frame img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .8s cubic-bezier(.2,.8,.2,1),filter .5s;
+  filter:saturate(.85) contrast(1.05);
+}
+.frame:hover{transform:translateY(-6px) scale(1.03);z-index:5}
+.frame:hover img{transform:scale(1.08);filter:saturate(1.15) contrast(1.08)}
+.frame::after{
+  content:attr(data-frame);
+  position:absolute;top:8px;left:10px;
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  color:rgba(255,255,255,.55);letter-spacing:.18em;
+  background:rgba(0,0,0,.55);padding:2px 6px;border-radius:2px;
+  z-index:2;
+}
+.frame .cap{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:24px 14px 12px;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:#fff;letter-spacing:.06em;
+  transform:translateY(100%);transition:transform .35s ease;
+  z-index:2;
+}
+.frame:hover .cap{transform:translateY(0)}
+
+/* TESTIMONIAL AVATAR upgrade */
+.av{
+  width:42px;height:42px;border-radius:50%;
+  overflow:hidden;position:relative;
+  border:1px solid var(--border);flex-shrink:0;
+}
+.av img{width:100%;height:100%;object-fit:cover}
+.av-initials{
+  position:absolute;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:15px;color:var(--amber);
+  background:linear-gradient(135deg,rgba(155,93,229,.18),rgba(7,8,15,.9));
+}
+.inst-name{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(48px,5.5vw,80px);line-height:.92;
+  letter-spacing:-.03em;margin-bottom:12px;
+}
+.inst-role{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--amber);letter-spacing:.12em;margin-bottom:44px;
+}
+.inst-bio p{font-size:17px;line-height:1.78;color:var(--mid);margin-bottom:18px}
+.inst-bio strong{color:var(--txt)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:32px}
+.tag{
+  padding:6px 14px;background:var(--bg);
+  border:1px solid var(--border);
+  font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid);
+}
+
+/* ─────────────────────────
+   FAQ
+───────────────────────── */
+#faq{padding:140px 60px}
+.faq-g{display:grid;grid-template-columns:1fr 1.2fr;gap:80px}
+.fl{display:flex;flex-direction:column;gap:2px;margin-top:48px}
+.fi{background:var(--s1);border:1px solid var(--b2);overflow:hidden}
+.fq{
+  padding:20px 26px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:14px;
+  font-family:'Clash Display',sans-serif;font-weight:600;font-size:17px;line-height:1.3;
+  transition:color .2s;user-select:none;
+}
+.fq:hover{color:var(--amber)}
+.fic{font-size:22px;color:var(--amber);transition:transform .3s;font-style:normal}
+.fi.open .fic{transform:rotate(45deg)}
+.fa{
+  height:0;overflow:hidden;
+  padding:0 26px;
+  transition:height .4s cubic-bezier(.16,1,.3,1),padding .4s ease;
+}
+.fi.open .fa{height:auto;padding:0 26px 22px}
+
+/* interpolate-size: animate height:0 → height:auto natively (Chrome 129+) */
+@supports (interpolate-size:allow-keywords){
+  :root{interpolate-size:allow-keywords}
+  .fa{transition:height .4s cubic-bezier(.16,1,.3,1),padding .4s ease}
+}
+
+/* @starting-style: animate IN when .open is first added */
+@starting-style{
+  .fi.open .fa{height:0}
+}
+
+.fa p{font-size:15px;line-height:1.72;color:var(--mid)}
+.fa strong{color:var(--txt)}
+
+/* ─────────────────────────
+   PRICING (DARK WARM)
+───────────────────────── */
+#price{
+  padding:140px 60px;
+  background:#0A0910;
+  position:relative;overflow:hidden;
+  border-top:1px solid rgba(155,93,229,.18);
+}
+#price::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(155,93,229,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(155,93,229,.04) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+.price-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;align-items:start;position:relative;z-index:1;
+}
+.price-sh{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:clamp(48px,6.5vw,96px);line-height:.9;
+  letter-spacing:-.04em;margin-bottom:28px;color:var(--txt);
+}
+.price-sh em{font-style:italic;font-weight:400;color:var(--amber)}
+.price-anchor{
+  font-size:16px;line-height:1.72;color:#a09880;margin-bottom:40px;
+}
+.price-anchor strong{color:var(--txt)}
+.price-block{margin-bottom:28px}
+.price-row{
+  display:flex;align-items:flex-end;gap:24px;
+  padding-bottom:14px;border-bottom:1px dashed rgba(155,93,229,.22);
+  margin-bottom:14px;
+}
+.price-now{
+  display:flex;align-items:flex-start;gap:6px;line-height:.9;
+}
+.price-big{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:108px;line-height:.9;color:var(--amber);letter-spacing:-.04em;
+  background:linear-gradient(180deg,#B07CF0 0%,#9B5DE5 60%,#7B4BCA 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  display:inline-block;
+}
+.price-cur{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:26px;color:var(--mid);margin-top:14px;letter-spacing:-.02em;
+}
+.price-aside{
+  display:flex;flex-direction:column;gap:6px;padding-bottom:8px;
+}
+.price-aside .price-was{
+  display:flex;align-items:center;gap:8px;
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+}
+.price-was-amt{
+  color:rgba(236,234,248,.45);text-decoration:line-through;
+  text-decoration-color:rgba(240,98,42,.85);text-decoration-thickness:2px;
+}
+.price-was-tag{
+  font-size:10px;color:var(--mid);letter-spacing:.12em;text-transform:uppercase;
+}
+.price-save{
+  font-family:'JetBrains Mono',monospace;font-size:12px;
+  color:var(--green);letter-spacing:.04em;
+}
+.price-save strong{color:var(--green);font-weight:600}
+.price-meta{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--mid);letter-spacing:.10em;text-transform:uppercase;
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+}
+.pm-sep{color:rgba(155,93,229,.4)}
+.pm-rate{color:var(--amber)}
+.inc{list-style:none;display:flex;flex-direction:column;gap:12px}
+.inc li{
+  font-size:15px;color:#a09880;
+  display:flex;align-items:center;gap:13px;
+}
+.inc li::before{
+  content:'✓';color:var(--amber);font-weight:700;
+  font-family:'JetBrains Mono',monospace;flex-shrink:0;
+}
+
+/* form on amber bg */
+.reg-form{
+  background:var(--bg);border:1px solid rgba(0,0,0,.15);
+  padding:44px;
+}
+.fh{
+  font-family:'Clash Display',sans-serif;font-weight:600;
+  font-size:24px;margin-bottom:24px;color:var(--txt);
+  line-height:1.18;letter-spacing:-.005em;
+}
+.form-step{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--amber);letter-spacing:.18em;
+  background:rgba(155,93,229,.10);border:1px solid rgba(155,93,229,.22);
+  padding:6px 12px;border-radius:99px;margin-bottom:20px;
+}
+.step-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--amber);
+  box-shadow:0 0 0 0 var(--amber);animation:dotpulse 1.6s ease-in-out infinite;
+}
+@keyframes dotpulse{0%,100%{box-shadow:0 0 0 0 rgba(155,93,229,.6)}50%{box-shadow:0 0 0 8px rgba(155,93,229,0)}}
+.form-mini .fg{margin-bottom:18px}
+.fg{margin-bottom:20px}
+.fg label{
+  display:block;font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;color:var(--mid);letter-spacing:.22em;
+  text-transform:uppercase;margin-bottom:8px;
+}
+.fg input,.fg select,.fg textarea{
+  width:100%;background:var(--s1);
+  border:1px solid var(--dim);color:var(--txt);
+  padding:13px 16px;font-family:'Satoshi',sans-serif;font-size:15px;
+  outline:none;transition:border-color .2s;border-radius:0;
+  -webkit-appearance:none;appearance:none;
+}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--amber)}
+.fg textarea{min-height:88px;resize:vertical}
+.fg select option{background:var(--s1)}
+.fbtn{
+  width:100%;background:var(--cta);color:#fff;
+  padding:17px;font-family:'Clash Display',sans-serif;
+  font-weight:700;font-size:15px;letter-spacing:.08em;
+  border:none;cursor:pointer;transition:opacity .2s;margin-top:4px;
+}
+.fbtn:hover{opacity:.84}
+.fnote{
+  margin-top:20px;font-family:'JetBrains Mono',monospace;
+  font-size:12px;color:var(--mid);line-height:1.6;
+  display:flex;flex-direction:column;gap:8px;
+}
+.fn-row{display:flex;align-items:flex-start;gap:10px}
+.fn-ic{
+  color:var(--green);font-weight:700;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.3;
+}
+
+/* ─────────────────────────
+   FOOTER
+───────────────────────── */
+footer{
+  padding:40px 60px;border-top:1px solid var(--b2);
+  display:flex;justify-content:space-between;align-items:center;
+  background:var(--bg);
+}
+.fl0{
+  font-family:'Clash Display',sans-serif;font-weight:700;
+  font-size:16px;letter-spacing:.18em;color:var(--amber);
+}
+.ft{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mid)}
+
+/* ─────────────────────────
+   ANIMATIONS
+───────────────────────── */
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.r{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);
+}
+.r.in{opacity:1;transform:translateY(0)}
+
+
+/* ─────────────────────────
+   RESPONSIVE
+───────────────────────── */
+@media(max-width:1100px){
+  nav{padding:18px 28px}
+  .nl{display:none}
+  #hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{padding:120px 28px 60px}
+  #hero::before{display:none}
+  .wm{display:none}
+  #pain,.quote-break,#program,#testi,#inst,#faq,#price{padding:80px 28px}
+  .pain-grid,.prog-grid{grid-template-columns:1fr;gap:8px}
+  .pcard{grid-column:span 1 !important}
+  .cs-head{padding:0 28px 24px}
+  .cs-meta{text-align:left}
+  .frame{width:240px}
+  .frame.wide{width:300px}
+  .frame.tall{width:190px}
+  .tscroll{display:flex;overflow-x:auto;scrollbar-width:none;cursor:grab;gap:10px}
+  .tc-{flex-shrink:0;width:300px}
+  .shift-inner,.inst-g,.faq-g,.price-inner,.cert-inner{grid-template-columns:1fr;gap:48px}
+  .prog-head{flex-direction:column;align-items:flex-start;gap:16px}
+  footer{flex-direction:column;gap:14px;text-align:center;padding:32px 28px}
+}
+@media(max-width:600px){
+  .hh1{font-size:54px}
+  .sh{font-size:40px}
+  .price-big{font-size:80px}
+  .price-sh{font-size:48px}
+  .reg-form{padding:28px 22px}
+}
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div id="intro">
+  <div class="i-top"></div>
+  <div class="i-bot"></div>
+  <div class="i-terminal" id="iterm"></div>
+  <div class="i-logo" id="ilogo">IMP<span>ULS</span></div>
+  <div class="i-sub">Warsztat Claude Code · Łódź 2026</div>
+</div>
+
+<!-- SVG filters (hidden) -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <filter id="glitch" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05 0.08"
+        numOctaves="2" stitchTiles="stitch" result="noise">
+        <animate id="ga" attributeName="seed"
+          values="1;7;3;9;2;6;1" dur="0.4s" begin="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise"
+        scale="10" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="glitch-sm" x="-2%" y="-2%" width="104%" height="104%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.08 0.04"
+        numOctaves="2" result="noise">
+        <animate id="ga2" attributeName="seed"
+          values="2;5;1;8;3;2" dur="0.3s" begin="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise"
+        scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<div id="progress"></div>
+<div id="cur"></div>
+
+<!-- FLOATING CTA -->
+<div class="fcta" id="fcta">
+  <div class="fcta-pulse"></div>
+  <a href="#price">Zapisz się · 990 zł →</a>
+</div>
+
+<!-- UNIFIED HEADER -->
+<header id="site-header">
+  <div class="strip">
+    <strong>⚡ Ograniczona liczba miejsc</strong> · Łódź, czerwiec 2026 · <a href="#price">Zapisz się →</a>
+  </div>
+  <nav id="nav">
+    <a href="#" class="logo">IMPULS</a>
+    <ul class="nl">
+      <li><a href="#shift">O kursie</a></li>
+      <li><a href="#program">Program</a></li>
+      <li><a href="#inst">Prowadzący</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#price" class="ncta">Zapisz się</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="aurora-bg" aria-hidden="true">
+      <div class="ab ab-1"></div>
+      <div class="ab ab-2"></div>
+      <div class="ab ab-3"></div>
+    </div>
+    <div class="wm" aria-hidden="true">&lt;/&gt;</div>
+    <p class="hlabel">Łódź · Czerwiec 2026 · Claude Code Workshop</p>
+    <h1 class="hh1">
+      <span class="lo">Twoje <span class="grad">pomysły</span></span>
+      <span class="lo">zasługują na lepsze</span>
+      <span class="lo outline">narzędzia.</span>
+    </h1>
+    <p class="hsub">
+      Wyobraź sobie poniedziałek, w którym przychodzisz do pracy jako
+      <span class="tw-wrap"><span id="tw"></span><span class="tw-cursor"></span></span>.<br>
+      Nie za pół roku. <strong>Po tym warsztacie.</strong>
+    </p>
+    <div class="hctas">
+      <a href="#price" class="btn btn-f">Zapisz się na warsztat →</a>
+      <a href="#shift" class="btn btn-o">Pokaż mi jak</a>
+    </div>
+    <p class="hero-trust">
+      <span class="stars">★★★★★</span>
+      <span>9 na 10 uczestników zmienia workflow</span>
+      <span class="sep">·</span>
+      <span>1 000+ przeszkolonych przez Bartosza</span>
+    </p>
+  </div>
+
+  <!-- right panel -->
+  <div class="hero-right">
+    <div class="hero-rings" aria-hidden="true">
+      <div class="hring hring-1"></div>
+      <div class="hring hring-2"></div>
+      <div class="hring hring-3"></div>
+      <div class="hring hring-4"></div>
+      <div class="hring-dot"></div>
+    </div>
+    <div class="terminal" style="position:relative;z-index:1">
+      <div class="tbar">
+        <div class="d dr"></div><div class="d dy"></div><div class="d dg"></div>
+        <span class="tn">terminal ~/twoj-projekt</span>
+      </div>
+      <div class="tbody" id="term"></div>
+    </div>
+    <div class="hr-stats">
+      <div class="hrs"><div class="hrn" data-amber="1" data-target="8">0</div><div class="hrl">× szybciej przy<br>rutynowych zadaniach</div></div>
+      <div class="hrs"><div class="hrn" data-amber="1" data-target="9">0</div><div class="hrl">na 10 uczestników<br>zmienia workflow</div></div>
+      <div class="hrs"><div class="hrn" data-amber="1" data-target="1">0</div><div class="hrl">dzień warsztatu<br>od 9:00 do 20:00</div></div>
+      <div class="hrs"><div class="hrn" data-amber="1" data-target="6">0</div><div class="hrl">modułów programu</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR — gdzie pracują uczestnicy -->
+<section class="trust-bar" aria-label="Uczestnicy">
+  <div class="tb-inner">
+    <p class="tb-label">// kim są uczestnicy warsztatów Bartosza</p>
+    <div class="tb-track-wrap">
+      <div class="tb-track">
+        <span class="tb-logo">Backend Devs</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Full-Stack</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Tech Leads</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Freelancerzy</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Software House</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Solo Founders</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">DevOps</span>
+        <span class="tb-sep"></span>
+        <!-- duplicate -->
+        <span class="tb-logo">Backend Devs</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Full-Stack</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Tech Leads</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Freelancerzy</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Software House</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">Solo Founders</span>
+        <span class="tb-sep"></span>
+        <span class="tb-logo">DevOps</span>
+        <span class="tb-sep"></span>
+      </div>
+    </div>
+    <div class="tb-stats">
+      <div class="tbs"><strong>1 047</strong><span>przeszkolonych developerów</span></div>
+      <div class="tbs"><strong>4.92<small>/5</small></strong><span>średnia ocena szkoleń</span></div>
+      <div class="tbs"><strong>96%</strong><span>poleca znajomym</span></div>
+      <div class="tbs"><strong>14 dni</strong><span>średni czas wdrożenia w pracy</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="mtrack">
+    <span>SZYBCIEJ</span><span class="dot">·</span>
+    <span>ODWAŻNIEJ</span><span class="dot">·</span>
+    <span>WIĘCEJ</span><span class="dot">·</span>
+    <span>INACZEJ</span><span class="dot">·</span>
+    <span>GŁĘBIEJ</span><span class="dot">·</span>
+    <span>SKUTECZNIEJ</span><span class="dot">·</span>
+    <span>AMBITNIEJ</span><span class="dot">·</span>
+    <span>ŚMIELEJ</span><span class="dot">·</span>
+  </div>
+  <div class="mtrack" aria-hidden="true">
+    <span>SZYBCIEJ</span><span class="dot">·</span>
+    <span>ODWAŻNIEJ</span><span class="dot">·</span>
+    <span>WIĘCEJ</span><span class="dot">·</span>
+    <span>INACZEJ</span><span class="dot">·</span>
+    <span>GŁĘBIEJ</span><span class="dot">·</span>
+    <span>SKUTECZNIEJ</span><span class="dot">·</span>
+    <span>AMBITNIEJ</span><span class="dot">·</span>
+    <span>ŚMIELEJ</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- PAIN -->
+<section id="pain">
+  <div class="pain-bg" aria-hidden="true">CZAS</div>
+  <div class="pain-inner">
+    <p class="sec-tag r">prawdziwy problem</p>
+    <h2 class="sh r" style="transition-delay:.07s">
+      <span class="lo">Przez ostatni rok</span>
+      <span class="lo">straciłeś ponad</span>
+      <span class="lo"><span class="amb">200 godzin.</span></span>
+    </h2>
+    <p class="pain-text r" style="transition-delay:.15s">
+      Zadania które się powtarzają. Błędy kradnące popołudnia. Projekty odkładane bo "nie ma kiedy". Każda z tych rzeczy ma rozwiązanie. <strong>Ty po prostu jeszcze o nim nie wiesz.</strong>
+    </p>
+  </div>
+
+  <div class="pain-grid">
+    <div class="pc r" data-n="01">
+      <p class="pc-q">Ile kosztuje Cię jeden powtarzalny dzień w pracy?</p>
+      <p>Jeśli Twoja stawka to 80 zł/h i tracisz 5 godzin tygodniowo na rutynowe zadania, to <strong>1 600 zł miesięcznie Twojego czasu</strong> wyrzucone w błoto. Co miesiąc. Rok w rok. A te godziny po prostu mogłeś mieć.</p>
+    </div>
+    <div class="pc r" data-n="02" style="transition-delay:.1s">
+      <p class="pc-q">Który projekt wciąż czeka, bo "nie ma kiedy"?</p>
+      <p>Masz pomysły. Masz umiejętności. Brakuje Ci przepustowości. Claude Code to wyższy bieg. <strong>Ten sam developer, trzy razy więcej możliwości.</strong> Bez przepracowania.</p>
+    </div>
+    <div class="pc r" data-n="03" style="transition-delay:.2s">
+      <p class="pc-q">Kiedy ostatnio czułeś, że masz realną przewagę?</p>
+      <p>"Praca z AI" przestała być wyróżnieniem w CV — stała się <strong>standardem rekrutacyjnym</strong>. Firmy już to widzą. Kto opanuje to teraz, ma przewagę której inni nie nadrobią szybko.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SHIFT (AMBER SECTION) -->
+<section id="shift">
+  <div class="shift-inner">
+    <div class="shift-copy">
+      <p class="sec-tag r">co to zmienia</p>
+      <h2 class="sh r" style="transition-delay:.07s">
+        <span class="lo">To nie</span>
+        <span class="lo">jest kurs</span>
+        <span class="lo">o <span class="amb">narzędziu.</span></span>
+      </h2>
+      <p class="r" style="transition-delay:.15s">
+        To kurs o tym, <strong>kim stajesz się jako developer</strong>. Claude Code rozumie cały kontekst Twojego projektu. Nie tylko fragment kodu który mu wklejasz. Cały projekt, jego architekturę, zależności, historię. I potrafi go aktywnie zmieniać na Twoje polecenie.
+      </p>
+      <p class="r" style="transition-delay:.22s">
+        Większość ludzi którzy "próbowali Claude" używa <strong>15% jego możliwości</strong>. Wiedzą jak "poprosić o kod". Nie wiedzą jak zlecić projekt. Nie wiedzą co jest możliwe. Po tym kursie wiedzą. I nie rozumieją jak pracowali wcześniej bez tego.
+      </p>
+      <p class="r" style="transition-delay:.29s">
+        To nie jest hiperbola: projekty planowane na <strong>kilka miesięcy robi się teraz w kilka dni</strong>. Funkcje które wymagały tygodnia pracy — w kilka godzin. Całe moduły, refactoring, migracje, dokumentacja, testy. Claude nie "pomaga" — <strong>przejmuje 80% mechanicznej pracy</strong> i zostawia Ci to co wymaga prawdziwego myślenia.
+      </p>
+    </div>
+
+    <div class="ba-stack r" style="transition-delay:.12s">
+      <div class="ba ba-b"><span class="ba-tag">PRZED</span><span class="ba-txt">Siedzisz godzinę nad kodem, który pisałeś już setki razy</span></div>
+      <div class="ba ba-a"><span class="ba-tag">PO</span><span class="ba-txt">3 minuty. Claude zna Twój projekt i generuje dokładnie to, czego potrzebujesz</span></div>
+      <div class="ba ba-b"><span class="ba-tag">PRZED</span><span class="ba-txt">Bug kradnie Ci popołudnie. Rozwiązanie nie ma sensu</span></div>
+      <div class="ba ba-a"><span class="ba-tag">PO</span><span class="ba-txt">Opisujesz problem, wklejasz logi. Claude diagnozuje, fixuje, tłumaczy</span></div>
+      <div class="ba ba-b"><span class="ba-tag">PRZED</span><span class="ba-txt">Refactoring leży na liście "kiedyś" od miesięcy. Za ryzykowny</span></div>
+      <div class="ba ba-a"><span class="ba-tag">PO</span><span class="ba-txt">Całość w jedno popołudnie. Logika nienaruszona. Testy zielone</span></div>
+      <div class="ba ba-b"><span class="ba-tag">PRZED</span><span class="ba-txt">"Napiszę testy jak będzie czas." Czasu nigdy nie ma</span></div>
+      <div class="ba ba-a"><span class="ba-tag">PO</span><span class="ba-txt">Coverage rośnie automatycznie przy każdym nowym kodzie</span></div>
+      <div class="ba ba-b"><span class="ba-tag">PRZED</span><span class="ba-txt">Projekt zaplanowany na 3 miesiące. Estymacja realna, bo tak zawsze było</span></div>
+      <div class="ba ba-a"><span class="ba-tag">PO</span><span class="ba-txt">Ten sam projekt gotowy w 2 tygodnie. Klient myśli, że coś pominąłeś</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section id="program">
+  <div class="prog-head r">
+    <div>
+      <p class="sec-tag">program kursu</p>
+      <h2 class="sh" style="margin-top:12px">Jeden dzień.<br><span class="amb">Kompletna zmiana.</span></h2>
+    </div>
+    <p class="prog-note">Każdy moduł to ćwiczenia na Twoim własnym kodzie. Zero slajdów bez kontekstu.</p>
+  </div>
+
+  <div class="prog-grid">
+    <div class="pcard r">
+      <div class="pnum">01</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 01</div>
+      <h3>Fundament: Claude Code od zera</h3>
+      <p>Instalacja, konfiguracja, pierwsze projekty. Jak Claude "widzi" Twój projekt i co z tym zrobić.</p>
+      <div class="pts">
+        <div class="pt">Instalacja i środowisko pracy</div>
+        <div class="pt">Jak działa kontekst projektu</div>
+        <div class="pt">Pierwsze komendy i workflow</div>
+        <div class="pt">CLAUDE.md: instrukcja dla AI</div>
+      </div>
+    </div>
+    <div class="pcard r" style="transition-delay:.1s">
+      <div class="pnum">02</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 02</div>
+      <h3>Prompt engineering dla developerów</h3>
+      <p>Jak pisać polecenia żeby dostawać to czego faktycznie chcesz, a nie to co AI chce dać.</p>
+      <div class="pts">
+        <div class="pt">Anatomia dobrego promptu</div>
+        <div class="pt">Kontekst i precyzja specyfikacji</div>
+        <div class="pt">Iteracja i korekta kierunku</div>
+        <div class="pt">Typowe pułapki i jak ich unikać</div>
+      </div>
+    </div>
+    <div class="pcard r" style="transition-delay:.2s">
+      <div class="pnum">03</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 03</div>
+      <h3>Praca z istniejącym kodem</h3>
+      <p>Refactoring, debugowanie, dodawanie feature'ów. Claude w realnym, brudnym projekcie.</p>
+      <div class="pts">
+        <div class="pt">Czytanie i analiza kodu</div>
+        <div class="pt">Bezpieczny refactoring</div>
+        <div class="pt">Debugowanie z AI</div>
+        <div class="pt">Dokumentacja automatyczna</div>
+      </div>
+    </div>
+    <div class="pcard r">
+      <div class="pnum">04</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 04</div>
+      <h3>Automatyzacja i agenty</h3>
+      <p>Claude jako autonomiczny agent w Twoim pipeline. Złożone zadania wieloetapowe.</p>
+      <div class="pts">
+        <div class="pt">Subagenty i podział zadań</div>
+        <div class="pt">Integracja z narzędziami</div>
+        <div class="pt">MCP: rozszerzanie możliwości</div>
+        <div class="pt">Automatyzacja powtarzalnych prac</div>
+      </div>
+    </div>
+    <div class="pcard r" style="transition-delay:.1s">
+      <div class="pnum">05</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 05</div>
+      <h3>Testing i jakość kodu</h3>
+      <p>TDD z AI. Generowanie testów, coverage, automated code review. Wszystko szybciej.</p>
+      <div class="pts">
+        <div class="pt">Generowanie testów jednostkowych</div>
+        <div class="pt">TDD workflow z Claude</div>
+        <div class="pt">Automatyczny code review</div>
+        <div class="pt">Security i best practices</div>
+      </div>
+    </div>
+    <div class="pcard r" style="transition-delay:.2s">
+      <div class="pnum">06</div>
+      <div class="pday">DZIEŃ 01 · MODUŁ 06</div>
+      <h3>Twój nowy workflow</h3>
+      <p>Migracje, legacy, nowe projekty od zera. Zamykamy z gotowym, personalizowanym workflow.</p>
+      <div class="pts">
+        <div class="pt">Nowy projekt od zera z Claude</div>
+        <div class="pt">Migracja legacy systemu</div>
+        <div class="pt">Personalizacja środowiska</div>
+        <div class="pt">Q&amp;A, case studies, feedback</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORKSHOP CONTACT SHEET -->
+<section class="cs-wrap" id="moments">
+  <div class="cs-head">
+    <h2 class="cs-title">Tak <em>wygląda</em> dzień, który zmienia twój workflow.</h2>
+    <div class="cs-meta">
+      <span><span class="dot"></span>ROLL · 035 / IMPULS · ŁÓDŹ 2026</span>
+      <span>F.2.8 · 1/250s · ISO 400</span>
+    </div>
+  </div>
+
+  <div class="filmstrip">
+    <div class="cs-track">
+      <div class="frame wide" data-frame="01"><img src="https://picsum.photos/seed/workshop-room-01/900/520" loading="lazy" alt=""><div class="cap">Sala warsztatowa · 09:30</div></div>
+      <div class="frame" data-frame="02"><img src="https://picsum.photos/seed/code-screen-02/720/540" loading="lazy" alt=""><div class="cap">Pierwsza komenda w terminalu</div></div>
+      <div class="frame tall" data-frame="03"><img src="https://picsum.photos/seed/dev-portrait-03/520/700" loading="lazy" alt=""><div class="cap">Skupienie</div></div>
+      <div class="frame" data-frame="04"><img src="https://picsum.photos/seed/team-collab-04/720/540" loading="lazy" alt=""><div class="cap">Sparring w parach</div></div>
+      <div class="frame wide" data-frame="05"><img src="https://picsum.photos/seed/whiteboard-05/900/520" loading="lazy" alt=""><div class="cap">Architektura na żywo</div></div>
+      <div class="frame" data-frame="06"><img src="https://picsum.photos/seed/laptop-keys-06/720/540" loading="lazy" alt=""><div class="cap">Claude w akcji</div></div>
+      <div class="frame tall" data-frame="07"><img src="https://picsum.photos/seed/coffee-break-07/520/700" loading="lazy" alt=""><div class="cap">Przerwa · kawa · pytania</div></div>
+      <!-- duplicate for seamless loop -->
+      <div class="frame wide" data-frame="01"><img src="https://picsum.photos/seed/workshop-room-01/900/520" loading="lazy" alt=""><div class="cap">Sala warsztatowa · 09:30</div></div>
+      <div class="frame" data-frame="02"><img src="https://picsum.photos/seed/code-screen-02/720/540" loading="lazy" alt=""><div class="cap">Pierwsza komenda w terminalu</div></div>
+      <div class="frame tall" data-frame="03"><img src="https://picsum.photos/seed/dev-portrait-03/520/700" loading="lazy" alt=""><div class="cap">Skupienie</div></div>
+      <div class="frame" data-frame="04"><img src="https://picsum.photos/seed/team-collab-04/720/540" loading="lazy" alt=""><div class="cap">Sparring w parach</div></div>
+      <div class="frame wide" data-frame="05"><img src="https://picsum.photos/seed/whiteboard-05/900/520" loading="lazy" alt=""><div class="cap">Architektura na żywo</div></div>
+      <div class="frame" data-frame="06"><img src="https://picsum.photos/seed/laptop-keys-06/720/540" loading="lazy" alt=""><div class="cap">Claude w akcji</div></div>
+      <div class="frame tall" data-frame="07"><img src="https://picsum.photos/seed/coffee-break-07/520/700" loading="lazy" alt=""><div class="cap">Przerwa · kawa · pytania</div></div>
+    </div>
+  </div>
+
+  <div class="filmstrip">
+    <div class="cs-track">
+      <div class="frame" data-frame="08"><img src="https://picsum.photos/seed/demo-stage-08/720/540" loading="lazy" alt=""><div class="cap">Demo · pełna sala</div></div>
+      <div class="frame tall" data-frame="09"><img src="https://picsum.photos/seed/notebook-09/520/700" loading="lazy" alt=""><div class="cap">Cheatsheet</div></div>
+      <div class="frame wide" data-frame="10"><img src="https://picsum.photos/seed/group-shot-10/900/520" loading="lazy" alt=""><div class="cap">Grupa · koniec dnia</div></div>
+      <div class="frame" data-frame="11"><img src="https://picsum.photos/seed/qa-session-11/720/540" loading="lazy" alt=""><div class="cap">Q&amp;A bez limitu</div></div>
+      <div class="frame tall" data-frame="12"><img src="https://picsum.photos/seed/terminal-zoom-12/520/700" loading="lazy" alt=""><div class="cap">Twoja pierwsza migracja</div></div>
+      <div class="frame wide" data-frame="13"><img src="https://picsum.photos/seed/networking-13/900/520" loading="lazy" alt=""><div class="cap">Networking · piętro 3</div></div>
+      <div class="frame" data-frame="14"><img src="https://picsum.photos/seed/handshake-14/720/540" loading="lazy" alt=""><div class="cap">Nowe kontakty</div></div>
+      <!-- duplicate -->
+      <div class="frame" data-frame="08"><img src="https://picsum.photos/seed/demo-stage-08/720/540" loading="lazy" alt=""><div class="cap">Demo · pełna sala</div></div>
+      <div class="frame tall" data-frame="09"><img src="https://picsum.photos/seed/notebook-09/520/700" loading="lazy" alt=""><div class="cap">Cheatsheet</div></div>
+      <div class="frame wide" data-frame="10"><img src="https://picsum.photos/seed/group-shot-10/900/520" loading="lazy" alt=""><div class="cap">Grupa · koniec dnia</div></div>
+      <div class="frame" data-frame="11"><img src="https://picsum.photos/seed/qa-session-11/720/540" loading="lazy" alt=""><div class="cap">Q&amp;A bez limitu</div></div>
+      <div class="frame tall" data-frame="12"><img src="https://picsum.photos/seed/terminal-zoom-12/520/700" loading="lazy" alt=""><div class="cap">Twoja pierwsza migracja</div></div>
+      <div class="frame wide" data-frame="13"><img src="https://picsum.photos/seed/networking-13/900/520" loading="lazy" alt=""><div class="cap">Networking · piętro 3</div></div>
+      <div class="frame" data-frame="14"><img src="https://picsum.photos/seed/handshake-14/720/540" loading="lazy" alt=""><div class="cap">Nowe kontakty</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FIT CHECK — dla kogo / dla kogo NIE -->
+<section class="fit-section" id="fit">
+  <div class="fit-inner">
+    <div class="fit-head">
+      <p class="sec-tag r">// szczerze</p>
+      <h2 class="sh r" style="transition-delay:.07s">
+        Nie dla każdego.<br>
+        <span style="color:var(--amber)">Sprawdź czy dla Ciebie.</span>
+      </h2>
+    </div>
+
+    <div class="fit-grid">
+      <div class="fit-col fit-yes r">
+        <div class="fit-col-h">
+          <span class="fit-mark fy">✓</span>
+          <h3>Wejdziesz, jeśli:</h3>
+        </div>
+        <ul class="fit-list">
+          <li>Piszesz kod regularnie. Junior, mid, senior. Każdy stack.</li>
+          <li>Masz pomysły. Brakuje Ci tylko przepustowości żeby je wypchnąć.</li>
+          <li>Frustruje Cię, że "AI w pracy" to dla Ciebie GitHub Copilot.</li>
+          <li>Wolisz zrozumieć narzędzie niż klepać prompty z YouTube.</li>
+          <li>Chcesz przewagę zanim wszyscy w zespole będą mieli to samo.</li>
+        </ul>
+      </div>
+
+      <div class="fit-col fit-no r" style="transition-delay:.12s">
+        <div class="fit-col-h">
+          <span class="fit-mark fn">✕</span>
+          <h3>Daruj sobie, jeśli:</h3>
+        </div>
+        <ul class="fit-list">
+          <li>Szukasz "magicznego promptu", który zrobi za Ciebie projekt.</li>
+          <li>Nie pracujesz w terminalu i wolisz drag-and-drop.</li>
+          <li>Liczysz, że AI zastąpi myślenie. Nie zastąpi. Wzmacnia.</li>
+          <li>Nie masz laptopa, na którym możesz zainstalować Claude Code.</li>
+          <li>Chcesz nagrania do obejrzenia w pidżamie. To warsztat na żywo.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERT CALLOUT -->
+<section class="cert-section">
+  <div class="cert-inner">
+    <div class="cert-badge r">
+      <div class="cert-icon">
+        <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+          <path d="M32 4l6 12 13 2-9.5 9.3 2.2 13L32 34.5 20.3 40.3l2.2-13L13 18l13-2z"/>
+          <circle cx="32" cy="48" r="10"/>
+          <line x1="26" y1="48" x2="30" y2="52"/><line x1="30" y1="52" x2="38" y2="44"/>
+        </svg>
+      </div>
+      <div class="cert-name">Claude Certified Architect</div>
+      <div class="cert-issuer">Anthropic · Official Certification</div>
+    </div>
+
+    <div class="cert-copy r" style="transition-delay:.1s">
+      <p class="sec-tag">certyfikat</p>
+      <h2 class="sh" style="text-align:left">Kurs oparty<br>na ścieżce<br><span class="amb">certyfikatu.</span></h2>
+      <p>
+        Program warsztatu jest zbudowany na bazie zakresu egzaminu <strong>Claude Certified Architect</strong> — oficjalnej certyfikacji Anthropic potwierdzającej zaawansowaną znajomość Claude Code. To jedyna taka certyfikacja na rynku, wystawiana bezpośrednio przez twórców Claude.
+      </p>
+      <p>
+        Kurs daje solidne <strong>podstawy i praktyczne przygotowanie</strong> do egzaminu — nie zdasz go bez dalszej pracy własnej, ale wyjdziesz z realnym doświadczeniem i mapą tego co musisz opanować. To uczciwy punkt startowy, nie obietnica magicznego zdania za pierwszym razem.
+      </p>
+      <p>
+        Certyfikat jest relatywnie nowy. To oznacza że <strong>mało kto go jeszcze posiada</strong> — i że ci którzy zdadzą egzamin teraz, wejdą na rynek z realną przewagą zanim stanie się on standardem. Dla klientów i rekruterów to konkretny sygnał: ta osoba zna Claude Code dogłębnie, zwalidowane przez Anthropic.
+      </p>
+      <div class="cert-pills">
+        <span class="cert-pill">Oficjalna certyfikacja Anthropic</span>
+        <span class="cert-pill">Weryfikowalna online</span>
+        <span class="cert-pill">Program oparty na zakresie egzaminu</span>
+        <span class="cert-pill">Podstawy do dalszego przygotowania</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BREAK -->
+<div class="quote-break">
+  <div class="qbg" aria-hidden="true">"</div>
+  <p class="qb-text r">
+    Za rok będziesz patrzeć wstecz<br>
+    na ten moment. Albo z dumą:<br>
+    <span class="amb">"To wtedy zacząłem."</span><br>
+    <em>Albo z żalem: "To wtedy powinienem."</em>
+  </p>
+</div>
+
+<!-- TESTIMONIALS -->
+<section id="testi">
+  <p class="sec-tag r">co mówią uczestnicy</p>
+  <h2 class="sh r" style="transition-delay:.07s">Mówią to sami.</h2>
+
+  <div class="tscroll" id="ts">
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"Wróciłem do biura w poniedziałek i zamknąłem ticket, który miał trwać tydzień, przed lunchem. Szef myślał, że coś pominąłem. Zapytałem go czy chce żebym wytłumaczył każdą linię."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=11" alt="Michał K."></div>
+        <div><div class="an">Michał K.</div><div class="ar">Senior Backend Developer</div></div>
+      </div>
+    </div>
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"Myślałam że wiem co to AI w pracy, używałam Copilota od roku. Claude Code to nie jest Copilot. To ktoś kto czyta cały Twój projekt i rozumie o co Ci chodzi zanim skończysz zdanie."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=47" alt="Anna S."></div>
+        <div><div class="an">Anna S.</div><div class="ar">Full Stack Developer</div></div>
+      </div>
+    </div>
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"Byłem sceptyczny co do kursów w ogóle. Ale to nie był kurs. To był ktoś kto pokazał mi jak myśleć inaczej o pracy. Po trzech tygodniach zaproponowałem szefowi podwyżkę. Dostałem."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=68" alt="Piotr W."></div>
+        <div><div class="an">Piotr W.</div><div class="ar">Tech Lead, 12 lat w branży</div></div>
+      </div>
+    </div>
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"W przerwie obiadowej warsztatu przepisałam moduł, który trzymał nas w tyle od miesiąca. Zrobiłam to sama, w 2 godziny. Wtedy zrozumiałam że to nie jest kolejne szkolenie."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=49" alt="Karolina N."></div>
+        <div><div class="an">Karolina N.</div><div class="ar">DevOps Engineer</div></div>
+      </div>
+    </div>
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"Miałem 4 lata doświadczenia i czułem się przeciętny. Teraz realizuję projekty, które wcześniej bałem się wycenić. Nie stałem się lepszym programistą. Stałem się innym programistą."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=12" alt="Tomasz M."></div>
+        <div><div class="an">Tomasz M.</div><div class="ar">Mid → Tech Lead w 4 miesiące</div></div>
+      </div>
+    </div>
+    <div class="tc-">
+      <div class="stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+      <p class="tq">"Projekt który wyceniłem na 6 tygodni skończyłem w 9 dni. Klientowi powiedziałem że pracowałem po nocach. Nie powiedziałem z czym."</p>
+      <div class="ta-">
+        <div class="av"><img src="https://i.pravatar.cc/100?img=15" alt="Radek K."></div>
+        <div><div class="an">Radek K.</div><div class="ar">Freelance Full Stack · Kraków</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTRUCTOR -->
+<section id="inst">
+  <div class="inst-g">
+    <div class="inst-l">
+      <!-- Podmień na: <img src="zdjecia/bartosz-formela.jpg" alt="Bartosz Formela"> -->
+      <div class="inst-img">
+        <img src="https://picsum.photos/seed/instructor42/480/620" alt="Bartosz Formela" loading="lazy">
+        <div class="photo-hint">↑ podmień własnym zdjęciem</div>
+      </div>
+    </div>
+    <div>
+      <p class="sec-tag r">prowadzący</p>
+      <h2 class="inst-name r" style="transition-delay:.07s">Bartosz<br>Formela</h2>
+      <p class="inst-role r" style="transition-delay:.14s">Software Developer · AI Workflow Specialist · Łódź</p>
+      <div class="inst-bio">
+        <p class="r" style="transition-delay:.2s">Na co dzień pracuję z developerami, którzy uczą się Claude Code od zera. Robię to <strong>każdego dnia, od miesięcy</strong>. W mojej firmie przez ten program przewinęło się już <strong>ponad tysiąc osób</strong>: juniorzy, seniorzy, ludzie którzy nigdy wcześniej nie dotknęli AI i tacy którzy myśleli, że już wszystko wiedzą.</p>
+        <p class="r" style="transition-delay:.27s">To dało mi coś, czego nie ma większość trenerów technicznych: wiem <strong>dokładnie gdzie każdy się zatrzymuje, co go blokuje i jak to wyjaśnić</strong> żeby w końcu zaskoczyło. Bez technicznego bełkotu. Bez założenia że "każdy to powinien wiedzieć".</p>
+        <p class="r" style="transition-delay:.34s">Pamiętam twarz każdego, kto po raz pierwszy zobaczył Claude refaktoryzujący moduł w 3 minuty. To zawsze to samo "wow". <strong>Po tym kursie to "wow" będzie Twoje.</strong></p>
+      </div>
+      <div class="tags r" style="transition-delay:.4s">
+        <span class="tag">Claude Code</span><span class="tag">AI Workflow</span>
+        <span class="tag">Full Stack Dev</span><span class="tag">Team Lead</span>
+        <span class="tag">Prompt Engineering</span><span class="tag">Łódź</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="faq-g">
+    <div>
+      <p class="sec-tag r">masz wątpliwości?</p>
+      <h2 class="sh r" style="transition-delay:.07s">
+        <span class="lo">Rozumiem.</span>
+        <span class="lo">Mam</span>
+        <span class="lo amb">odpowiedzi.</span>
+      </h2>
+    </div>
+    <div class="fl r" style="transition-delay:.1s">
+      <div class="fi">
+        <div class="fq">Czy to dla mnie jeśli nigdy nie używałem AI do kodowania?<span class="fic">+</span></div>
+        <div class="fa"><p><strong>Tak, i właśnie dla Ciebie ten kurs ma największy sens.</strong> Zaczynamy od absolutnych podstaw. Jedyne wymaganie to że piszesz już kod. Na jakim poziomie, w jakim języku, nie ma znaczenia. Kurs jest równie wartościowy dla juniora zaczynającego przygodę z AI, jak i dla seniora który "próbował ChatGPT" i chce wreszcie zrozumieć co naprawdę jest możliwe.</p></div>
+      </div>
+      <div class="fi">
+        <div class="fq">Czy to nie jest za drogie?<span class="fic">+</span></div>
+        <div class="fa"><p>Policz: jeśli zarabiasz 80 zł/h i tracisz 5h tygodniowo na rzeczy które Claude robi w minutach, to <strong>400 zł tygodniowo strat</strong>. Kurs zwraca się w miesiąc.</p></div>
+      </div>
+      <div class="fi">
+        <div class="fq">Czemu nie nauczyć się samemu z YouTube?<span class="fic">+</span></div>
+        <div class="fa"><p>Możesz. Zajmie Ci 6-12 miesięcy eksperymentowania i frustracji. Kurs daje <strong>skondensowaną wiedzę z realnej pracy produkcyjnej</strong> i feedback w czasie rzeczywistym.</p></div>
+      </div>
+      <div class="fi">
+        <div class="fq">Czy to nie przestanie być aktualne?<span class="fic">+</span></div>
+        <div class="fa"><p>Narzędzia się zmieniają, <strong>sposób myślenia zostaje</strong>. Uczymy mentalności i zasad, nie przycisków. Alumni dostają dostęp do grupy gdzie dzielimy się aktualizacjami.</p></div>
+      </div>
+      <div class="fi">
+        <div class="fq">Czy mogę dostać fakturę VAT?<span class="fic">+</span></div>
+        <div class="fa"><p>Oczywiście. Podaj dane firmy w formularzu lub napisz do nas po zapisaniu się. <strong>Możliwa też płatność w 2 ratach.</strong></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING (AMBER SECTION) -->
+<section id="price">
+  <div class="price-inner">
+    <div>
+      <p class="sec-tag r">zapisz się</p>
+      <h2 class="price-sh r" style="transition-delay:.07s">Jeden dzień.<br><em>Inne życie zawodowe.</em></h2>
+      <p class="price-anchor r" style="transition-delay:.14s">
+        Dla każdego kto pisze kod: junior, mid, senior, freelancer. Nie musisz wcześniej dotykać AI. Musisz tylko chcieć pracować inaczej niż dziś. Policz uczciwie: ile zarabiasz na godzinę? <strong>Kurs zwraca się w ciągu jednego miesiąca.</strong> Każdy miesiąc potem to czysty zysk.
+      </p>
+      <ul class="inc r" style="transition-delay:.21s">
+        <li>Jeden pełny dzień warsztatu (9:00–20:00)</li>
+        <li>Materiały i ćwiczenia do pobrania</li>
+        <li>Dostęp do grupy alumni na 12 miesięcy</li>
+        <li>Certyfikat ukończenia warsztatu</li>
+        <li>Podstawowe przygotowanie do egzaminu <strong>Claude Certified Architect</strong></li>
+        <li>Konsultacja 1:1 po kursie (30 min)</li>
+        <li>Kameralna, ograniczona liczba miejsc</li>
+      </ul>
+    </div>
+    <div class="reg-form r" style="transition-delay:.12s">
+      <div class="price-block">
+        <div class="price-row">
+          <div class="price-now">
+            <span class="price-big">990</span>
+            <span class="price-cur">zł</span>
+          </div>
+          <div class="price-aside">
+            <div class="price-was">
+              <span class="price-was-amt">2 500 zł</span>
+              <span class="price-was-tag">wartość pakietu</span>
+            </div>
+            <div class="price-save">oszczędzasz <strong>1 510 zł</strong></div>
+          </div>
+        </div>
+        <div class="price-meta">
+          <span>BRUTTO / OSOBA</span><span class="pm-sep">·</span>
+          <span>ŁÓDŹ · CZERWIEC 2026</span><span class="pm-sep">·</span>
+          <span class="pm-rate">RRSO 0% · 2 raty po 495 zł</span>
+        </div>
+      </div>
+      <div class="form-step">
+        <span class="step-dot"></span>
+        <span class="step-txt">KROK 1 z 2 · ZAREZERWUJ MIEJSCE</span>
+      </div>
+      <h3 class="fh">Wpisz e-mail. Resztę uzupełnisz później.</h3>
+      <form onsubmit="onS(event)" class="form-mini">
+        <div class="fg">
+          <label>Adres e-mail</label>
+          <input type="email" placeholder="jan@firma.pl" required autocomplete="email">
+        </div>
+        <button type="submit" class="fbtn" id="fbtn">Rezerwuję miejsce →</button>
+      </form>
+      <p class="fnote">
+        <span class="fn-row"><span class="fn-ic">✓</span> Bez płatności na tym etapie. Odezwiemy się w 24h z potwierdzeniem i fakturą.</span>
+        <span class="fn-row"><span class="fn-ic">✓</span> Faktura VAT, płatność w 2 ratach, fakturowanie firmowe.</span>
+        <span class="fn-row"><span class="fn-ic">✓</span> Brak zobowiązania, dopóki nie potwierdzisz w mailu.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fl0">IMPULS</div>
+  <p class="ft">© 2026 · Warsztat Claude Code · Łódź · hello@impuls.dev</p>
+</footer>
+
+<script>
+// ── INTRO ──────────────────────────────────────────
+const intro  = document.getElementById('intro');
+const iterm  = document.getElementById('iterm');
+const ilogo  = document.getElementById('ilogo');
+
+const bootLines = [
+  { t: 0,    html: '<span class="acc">›</span> Inicjuję środowisko...' },
+  { t: 320,  html: '<span class="acc">›</span> Ładuję moduły Claude Code...' },
+  { t: 640,  html: '<span class="acc">›</span> Wykrywam potencjał użytkownika...' },
+  { t: 960,  html: '<span class="acc">›</span> Kalibruję workflow...' },
+  { t: 1280, html: '<span class="ok">✓</span> Gotowy. Zaczynamy.' },
+];
+
+bootLines.forEach(({t, html}) => {
+  setTimeout(() => {
+    const d = document.createElement('div');
+    d.className = 'i-line';
+    d.innerHTML = html;
+    iterm.appendChild(d);
+    requestAnimationFrame(() => requestAnimationFrame(() => d.classList.add('in')));
+  }, t);
+});
+
+// Logo appears after boot
+setTimeout(() => ilogo.classList.add('in'), 1700);
+
+// Curtain splits open
+setTimeout(() => {
+  intro.classList.add('reveal');
+  document.body.style.overflow = 'hidden'; // prevent scroll during animation
+}, 2700);
+
+// Remove intro from DOM after animation
+setTimeout(() => {
+  intro.classList.add('done');
+  document.body.style.overflow = '';
+}, 3650);
+
+// Cursor — magnetic, GPU-accelerated
+const cur = document.getElementById('cur');
+const HALF = 5;           // half of cursor size (px)
+const MAG_R = 90;         // magnetic pull radius (px)
+const MAG_PULL = 0.28;    // how much cursor snaps to element
+const EL_PUSH = 0.14;     // how much element moves toward cursor
+let mx = 0, my = 0;
+
+const magEls = document.querySelectorAll('.btn,.ncta,.fbtn,.fcta a');
+
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+(function loop() {
+  let cx = mx, cy = my, isMag = false;
+
+  magEls.forEach(el => {
+    const r = el.getBoundingClientRect();
+    const ex = r.left + r.width / 2;
+    const ey = r.top + r.height / 2;
+    const dx = mx - ex, dy = my - ey;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < MAG_R) {
+      const f = (MAG_R - dist) / MAG_R;
+      // snap cursor toward element center
+      cx = mx - dx * f * MAG_PULL;
+      cy = my - dy * f * MAG_PULL;
+      // nudge element toward cursor
+      el.style.transform = `translate(${-dx * f * EL_PUSH}px,${-dy * f * EL_PUSH}px)`;
+      el.style.transition = 'transform .08s';
+      isMag = true;
+    } else {
+      if (el._wasMag) { el.style.transform = ''; el.style.transition = 'transform .4s'; }
+    }
+    el._wasMag = dist < MAG_R;
+  });
+
+  cur.style.transform = `translate(${cx - HALF}px,${cy - HALF}px)`;
+  cur.classList.toggle('mag', isMag);
+  requestAnimationFrame(loop);
+})();
+
+// Nav sticky + progress bar + floating CTA
+const hdr=document.getElementById('site-header');
+const prog=document.getElementById('progress');
+const fcta=document.getElementById('fcta');
+const hero=document.getElementById('hero');
+addEventListener('scroll',()=>{
+  const HDR_H=hdr.offsetHeight;
+  hdr.classList.toggle('compact',scrollY>HDR_H+10);
+  // progress bar
+  const pct=scrollY/(document.body.scrollHeight-innerHeight)*100;
+  prog.style.width=pct+'%';
+  // floating CTA: show after hero
+  const heroBottom=hero.offsetTop+hero.offsetHeight;
+  fcta.classList.toggle('show',scrollY>heroBottom-100);
+});
+
+// Reveal — JS fallback only if CSS scroll-driven not supported
+if(!CSS.supports('animation-timeline','view()')){
+  const ro=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')});
+  },{threshold:.07,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.r').forEach(el=>ro.observe(el));
+} else {
+  // ensure elements are visible for CSS-driven browsers
+  document.querySelectorAll('.r').forEach(el=>el.classList.add('in'));
+}
+
+// Counters
+const co=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,t=+el.dataset.target;
+    let v=0;
+    const id=setInterval(()=>{
+      v=Math.min(v+t/60,t);
+      el.textContent=Math.floor(v);
+      if(v>=t)clearInterval(id);
+    },18);
+    co.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-target]').forEach(el=>co.observe(el));
+
+// Terminal
+const term=document.getElementById('term');
+const tl=[
+  [150, '<span class="tp">›</span> <span class="tc">claude "stwórz REST API z JWT auth i testami"</span>'],
+  [900, '<span class="to">  Analizuję strukturę projektu...</span>'],
+  [1500,'<span class="to">  Tworzę endpointy POST /auth, GET /posts...</span>'],
+  [2100,'<span class="to">  Implementuję middleware autoryzacyjne...</span>'],
+  [2700,'<span class="to">  Piszę testy jednostkowe (coverage 91%)...</span>'],
+  [3400,'<span class="ts">  ✓ Gotowe. 340 linii kodu. 28 sekund.</span>'],
+  [4200,''],
+  [4800,'<span class="tp">›</span> <span class="tc">claude "zrefaktoruj moduł payments"</span>'],
+  [5400,'<span class="to">  Czytam payments/index.js (847 linii)...</span>'],
+  [6000,'<span class="to">  Refaktoryzuję, zachowuję API surface...</span>'],
+  [6700,'<span class="ts">  ✓ 847 → 312 linii. Wszystkie testy OK.</span>'],
+];
+tl.forEach(([d,h])=>{
+  setTimeout(()=>{
+    if(!term)return;
+    const el=document.createElement('div');
+    el.innerHTML=h||'&nbsp;';
+    term.appendChild(el);
+    term.scrollTop=term.scrollHeight;
+  },d);
+});
+setTimeout(()=>{
+  if(!term)return;
+  const el=document.createElement('div');
+  el.innerHTML='<span class="tp">›</span> <span class="tc-cur"></span>';
+  term.appendChild(el);
+},7600);
+
+// Testimonials drag
+const ts=document.getElementById('ts');
+let dn=false,sx,sl;
+ts.addEventListener('mousedown',e=>{dn=true;sx=e.pageX-ts.offsetLeft;sl=ts.scrollLeft});
+ts.addEventListener('mouseleave',()=>dn=false);
+ts.addEventListener('mouseup',()=>dn=false);
+ts.addEventListener('mousemove',e=>{
+  if(!dn)return;e.preventDefault();
+  ts.scrollLeft=sl-(e.pageX-ts.offsetLeft-sx);
+});
+
+// FAQ
+document.querySelectorAll('.fq').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const it=q.parentElement;
+    const was=it.classList.contains('open');
+    document.querySelectorAll('.fi').forEach(i=>i.classList.remove('open'));
+    if(!was)it.classList.add('open');
+  });
+});
+
+// Form
+function onS(e){
+  e.preventDefault();
+  const b=document.getElementById('fbtn');
+  b.textContent='✓ Wysłano! Odezwiemy się w ciągu 24h';
+  b.style.background='var(--green)';b.disabled=true;
+}
+
+// ── TYPEWRITER ──────────────────────────────────────
+const twEl = document.getElementById('tw');
+if(twEl){
+  const roles = [
+    'developer z supermocą',
+    'ktoś kto dostarcza 3× więcej',
+    'programista AI-first',
+    'ten który zawsze zdąża',
+    'ktoś kogo zespół nie nadąża',
+    'developer który bierze trudniejsze projekty',
+  ];
+  let ri=0, ci=0, deleting=false;
+  function tick(){
+    const word = roles[ri];
+    if(!deleting){
+      twEl.textContent = word.slice(0, ++ci);
+      if(ci === word.length){ deleting=true; setTimeout(tick,2200); return; }
+      setTimeout(tick, 55 + Math.random()*30);
+    } else {
+      twEl.textContent = word.slice(0, --ci);
+      if(ci === 0){ deleting=false; ri=(ri+1)%roles.length; setTimeout(tick,400); return; }
+      setTimeout(tick, 28);
+    }
+  }
+  // start after intro finishes
+  setTimeout(tick, 4200);
+}
+
+// ── HOLOGRAPHIC CARDS ────────────────────────────────
+document.querySelectorAll('.pcard,.tc-').forEach(card=>{
+  // inject shine div
+  const shine = document.createElement('div');
+  shine.className = 'holo-shine';
+  card.appendChild(shine);
+  // track mouse for radial highlight + conic angle
+  card.addEventListener('mousemove', e=>{
+    const r = card.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width  * 100).toFixed(1);
+    const y = ((e.clientY - r.top)  / r.height * 100).toFixed(1);
+    const angle = Math.atan2(e.clientY - (r.top + r.height/2),
+                             e.clientX - (r.left + r.width/2)) * 180/Math.PI;
+    card.style.setProperty('--mx', x+'%');
+    card.style.setProperty('--my', y+'%');
+    card.style.setProperty('--holo-angle', angle+'deg');
+  });
+});
+
+// Card 3D tilt
+document.querySelectorAll('.pcard,.tcard,.pain-card,.pc').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`perspective(600px) rotateY(${x*8}deg) rotateX(${-y*8}deg) translateY(-5px)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+    card.style.transition='transform .5s ease';
+    setTimeout(()=>card.style.transition='',500);
+  });
+});
+
+// Parallax watermark
+const wm=document.querySelector('.wm');
+if(wm){
+  addEventListener('scroll',()=>{
+    wm.style.transform=`translateY(${scrollY*.25}px)`;
+  },{passive:true});
+}
+
+// Text scramble on logo hover
+const logos=document.querySelectorAll('.logo,.fl0');
+const CHARS='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+logos.forEach(el=>{
+  const orig=el.textContent;
+  el.addEventListener('mouseenter',()=>{
+    let i=0;
+    const id=setInterval(()=>{
+      el.textContent=orig.split('').map((c,j)=>
+        j<i?orig[j]:CHARS[Math.floor(Math.random()*CHARS.length)]
+      ).join('');
+      if(++i>orig.length)clearInterval(id);
+    },40);
+  });
+});
+
+// ── SVG GLITCH TRIGGER ───────────────────────────────
+const ga = document.getElementById('ga');
+const ga2 = document.getElementById('ga2');
+document.querySelectorAll('.logo,.fl0').forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    try { ga?.beginElement(); ga2?.beginElement(); } catch(e){}
+  });
+});
+
+// Also: periodic subtle glitch on the </> watermark
+if(wm) {
+  setInterval(() => {
+    wm.style.filter = 'url(#glitch-sm)';
+    setTimeout(() => wm.style.filter = '', 350);
+  }, 6000 + Math.random() * 4000);
+}
+
+// ── LENIS SMOOTH SCROLL ──────────────────────────────
+if(typeof Lenis !== 'undefined'){
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smoothWheel: true,
+  });
+  function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+  requestAnimationFrame(raf);
+}
+</script>
+</body>
+</html>
